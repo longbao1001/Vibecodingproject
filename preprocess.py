@@ -42,11 +42,18 @@ def load_all_csv(raw_dir):
                 continue
             file_path = os.path.join(sub_dir, file_name)
             df = pd.read_csv(file_path, sep=";", header=0)
-            # 校验字段
-            missing = [c for c in RAW_COLUMNS if c not in df.columns]
-            if missing:
-                print(f"[警告] {file_path} 缺少字段: {missing}，跳过")
+            # 校验核心传感器字段（9列必须存在）
+            core_cols = [c for c in RAW_COLUMNS if c not in ("anomaly", "changepoint")]
+            missing_core = [c for c in core_cols if c not in df.columns]
+            if missing_core:
+                print(f"[警告] {file_path} 缺少核心字段: {missing_core}，跳过")
                 continue
+            # anomaly-free 等正常工况数据缺少标签列，填充为 0（正常）
+            if "anomaly" not in df.columns:
+                df["anomaly"] = 0
+                print(f"[补充标签] {fault_type}/{file_name} 无anomaly列，填充为0（正常工况）")
+            if "changepoint" not in df.columns:
+                df["changepoint"] = 0
             df["fault_type"] = fault_type  # 附加故障类型标签（valve1/valve2/other/anomaly-free）
             all_frames.append(df)
             print(f"[读取] {fault_type}/{file_name}  样本数: {len(df)}")
@@ -83,6 +90,12 @@ def preprocess(df):
     # 7. 保留业务字段
     keep = [c for c in KEEP_COLUMNS if c in df.columns]
     df = df[keep]
+
+    # 8. 保留字段后再次去重（确保最终输出无重复行）
+    before = len(df)
+    df = df.drop_duplicates().reset_index(drop=True)
+    if before - len(df) > 0:
+        print(f"[二次去重] 字段筛选后删除重复行: {before - len(df)}")
     return df
 
 
@@ -103,6 +116,13 @@ def main():
     df_processed = preprocess(df_raw)
     print(f"\n[预处理完成] 输出样本数: {len(df_processed)}")
     print(f"[字段列表] {list(df_processed.columns)}")
+    print(f"\n[预处理后数据质量统计]")
+    print(f"  总样本数: {len(df_processed)}")
+    print(f"  缺失值总数: {df_processed.isnull().sum().sum()}")
+    print(f"  重复行数: {df_processed.duplicated().sum()}")
+    print(f"  时间范围: {df_processed['datetime'].min()} ~ {df_processed['datetime'].max()}")
+    print(f"  异常标签分布: {df_processed['anomaly'].value_counts().to_dict()}")
+    print(f"  故障类型分布: {df_processed['fault_type'].value_counts().to_dict()}")
 
     # 3. 输出
     df_processed.to_csv(OUTPUT_FILE, index=False, encoding="utf-8-sig")

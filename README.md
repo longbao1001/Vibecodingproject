@@ -12,29 +12,32 @@
 - **数据来源**：https://github.com/KotsoevK/SKAB
 - **数据类型**：公开开源数据集，无涉密、私有敏感数据
 - **仓库位置**：`data/SKAB-master/`（完整原始数据已随仓库提交）
-- **数据规模**：原始 37459 条样本，覆盖 valve1、valve2、other 三类故障场景
-- **字段**：datetime、加速度（2路）、电流、压力、温度、热电偶、电压、流量、anomaly 异常标签
+- **数据规模**：原始 46860 条样本，覆盖 anomaly-free（正常工况）、valve1、valve2、other 四类故障场景
+- **字段**：datetime、加速度（2路）、电流、压力、温度、热电偶、电压、流量、anomaly 异常标签、fault_type 故障类型
 
 ## 数据预处理
 - **预处理脚本**：`preprocess.py`
 - **运行方式**：`python preprocess.py`
 - **处理逻辑**：
-  1. 遍历 `data/SKAB-master/data/` 下全部故障场景 CSV，合并为单一数据集
-  2. datetime 时间格式转换，删除无效时间戳行
-  3. 去除完全重复行
-  4. 数值列缺失值向前填充，残余缺失用列均值填充
-  5. anomaly 标签转为整数，按时间排序
-  6. 附加 fault_type 故障类型标签
-- **输出文件**：`data/processed/out.csv`（37269 条干净样本，11 列业务字段）
+  1. 遍历 `data/SKAB-master/data/` 下全部 38 个 CSV，合并为单一数据集
+  2. anomaly-free 正常工况数据无 anomaly 列，填充为 0
+  3. datetime 时间格式转换，删除无效时间戳行
+  4. 两次去重（全字段 + 业务字段），确保输出无重复行
+  5. 数值列缺失值向前填充，残余缺失用列均值填充
+  6. anomaly 标签转为整数，按时间排序
+  7. 保留 11 列业务字段，附加 fault_type 故障类型标签
+- **输出文件**：`data/processed/out.csv`（46669 条干净样本，缺失值 0，重复行 0）
+- **数据质量报告**：`data/processed/data_report.md`（含预处理前后统计对比）
 
 ## 项目目录结构
 ```
 .
 ├── data/
 │   ├── README.md              # 数据集说明文档
-│   ├── SKAB-master/           # SKAB 原始数据集（valve1/valve2/other/anomaly-free）
+│   ├── SKAB-master/           # SKAB 原始数据集（anomaly-free/valve1/valve2/other）
 │   └── processed/
-│       └── out.csv            # 预处理后输出数据
+│       ├── out.csv            # 预处理后输出数据（46669条）
+│       └── data_report.md     # 数据预处理质量报告
 ├── prompt/
 │   ├── README.md              # Prompt 档案说明
 │   ├── 01_学习笔记阶段.json    # 第一阶段 AI 对话记录
@@ -52,7 +55,7 @@
 - **算法库**：Pandas、NumPy、Scikit-learn
 - **数据库**：SQLite（后续阶段开发）
 - **前端**：HTML + CSS + JavaScript + ECharts（后续阶段开发）
-- **AI 辅助工具**：通义灵码（Harness），底层大模型 Qwen3.8
+- **AI 辅助工具**：豆包（doubao）
 - **版本控制**：Git + GitHub
 
 ## 课程技术方向映射
