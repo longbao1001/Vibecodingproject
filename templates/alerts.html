@@ -34,14 +34,16 @@
         <button class="btn btn-primary" onclick="loadAlerts()">刷新</button>
         <button class="btn btn-warn" onclick="scanAll()">一键扫描全部设备</button>
     </div>
+    <div class="table-wrap">
     <table>
         <thead><tr>
             <th>ID</th><th>设备编号</th><th>采集时间</th><th>告警类型</th>
             <th>级别</th><th>异常分数</th><th>故障概率</th>
-            <th>根因分析</th><th>状态</th><th>操作</th>
+            <th class="td-wrap">根因分析</th><th>状态</th><th class="col-action">操作</th>
         </tr></thead>
         <tbody id="alert-tbody"></tbody>
     </table>
+    </div>
     <div class="empty" id="alert-empty" style="display:none;">暂无告警数据，请点击"一键扫描全部设备"或到监控页执行批量扫描</div>
 </div>
 {% endblock %}
@@ -104,9 +106,9 @@ async function loadAlerts(){
             <td>${a.id}</td><td><b>${a.device_id}</b></td><td>${a.timestamp}</td><td>${a.alert_type}</td>
             <td><span class="tag ${sevTag}">${a.severity}</span></td>
             <td>${a.anomaly_score}</td><td>${(a.fault_prob*100).toFixed(1)}%</td>
-            <td style="max-width:280px;font-size:12px;">${a.root_cause||'-'}</td>
+            <td class="td-wrap">${a.root_cause||'-'}</td>
             <td><span class="tag ${statusTag}">${a.status}</span></td>
-            <td>${a.status==='未处理'?`<button class="btn btn-success btn-sm" onclick="handleAlert(${a.id})">处理</button>`:'-'}</td>
+            <td class="col-action">${a.status==='未处理'?`<button class="btn btn-success btn-sm" onclick="handleAlert(${a.id})">处理</button>`:'-'}</td>
         </tr>`;
     }).join('');
     loadStats(); loadTrend();

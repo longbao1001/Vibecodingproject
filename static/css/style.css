@@ -132,6 +132,18 @@ table th {
 }
 table td { padding: 10px; border-bottom: 1px solid rgba(30,51,88,0.5); color: var(--text-main); white-space: nowrap; }
 table tr:hover { background: rgba(43,127,255,0.08); }
+/* 长文本列（根因分析、运维措施等）允许自动换行，避免横向溢出与相邻列重叠 */
+td.td-wrap, th.td-wrap {
+    white-space: normal !important;
+    word-break: break-word;
+    line-height: 1.55;
+    min-width: 220px;
+    max-width: 320px;
+    font-size: 12.5px;
+    color: var(--text-sub);
+}
+/* 操作列固定不压缩 */
+td.col-action, th.col-action { white-space: nowrap; text-align: center; }
 
 /* 状态标签 */
 .tag { display: inline-block; padding: 2px 11px; border-radius: 11px; font-size: 12px; white-space: nowrap; }
