@@ -1,99 +1,199 @@
 {% extends "base.html" %}
 {% block title %}设备总览 - 智能故障预警系统{% endblock %}
 {% block content %}
-<h2 class="page-title">设备总览</h2>
+<h2 class="page-title">设备运维管理驾驶舱</h2>
 
-<!-- 统计卡片 -->
+<!-- KPI 指标卡 -->
 <div class="stat-grid">
     <div class="stat-card"><div class="label">接入设备数</div><div class="value" id="s-devices">-</div></div>
     <div class="stat-card"><div class="label">传感器数据总量</div><div class="value" id="s-data">-</div></div>
-    <div class="stat-card warn"><div class="label">告警总数</div><div class="value" id="s-alerts">-</div></div>
+    <div class="stat-card success"><div class="label">全厂综合健康率</div><div class="value" id="s-health">-</div></div>
+    <div class="stat-card warn"><div class="label">未处理告警</div><div class="value" id="s-unhandled">-</div></div>
     <div class="stat-card danger"><div class="label">未处理高危告警</div><div class="value" id="s-high">-</div></div>
-    <div class="stat-card success"><div class="label">已处理告警</div><div class="value" id="s-handled">-</div></div>
+</div>
+
+<!-- 第一行图表：状态环形图 + 健康度对比 + 告警级别 -->
+<div class="panel-row-3">
+    <div class="panel">
+        <div class="panel-title">设备运行状态分布</div>
+        <div id="chart-status" class="chart-sm"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">各设备健康度评分</div>
+        <div id="chart-health" class="chart-sm"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">告警级别分布</div>
+        <div id="chart-severity" class="chart-sm"></div>
+    </div>
+</div>
+
+<!-- 第二行：告警趋势 + 特征重要度 -->
+<div class="panel-row">
+    <div class="panel">
+        <div class="panel-title">告警时间趋势</div>
+        <div id="chart-trend" class="chart-sm"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">故障特征重要度（根因分析依据）</div>
+        <div id="chart-importance" class="chart-sm"></div>
+    </div>
+</div>
+
+<!-- 设备明细表 + 最近告警 -->
+<div class="panel-row">
+    <div class="panel">
+        <div class="panel-title">设备健康档案</div>
+        <table>
+            <thead><tr>
+                <th>设备编号</th><th>设备名称</th><th>位置</th><th>样本数</th>
+                <th>健康度</th><th>状态</th><th>未处理告警</th><th>操作</th>
+            </tr></thead>
+            <tbody id="device-tbody"></tbody>
+        </table>
+    </div>
+    <div class="panel">
+        <div class="panel-title">最新告警动态</div>
+        <div class="alert-feed" id="alert-feed"></div>
+    </div>
 </div>
 
 <!-- 模型信息 -->
 <div class="panel">
-    <div class="panel-title">算法模型信息</div>
-    <div id="model-info" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-        <div>
-            <p style="margin-bottom:10px;">模块一：孤立森林（IsolationForest）时序异常检测</p>
-            <p style="margin-bottom:10px;">模块二：随机森林（RandomForest）故障预测，测试集准确率：
-                <b id="model-acc" style="color:#52c41a;font-size:18px;">-</b>
-            </p>
-            <p style="margin-bottom:10px;">模块三：基于特征重要度的故障根因分析</p>
-        </div>
-        <div id="importance-chart" class="chart" style="height:240px;"></div>
+    <div class="panel-title">算法模型说明</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:18px;color:var(--text-main);font-size:14px;line-height:1.8;">
+        <div><b style="color:var(--cyan);">模块一 · 时序异常检测</b><br>孤立森林 IsolationForest，学习正常工况边界，识别偏离正常运行的异常点</div>
+        <div><b style="color:var(--cyan);">模块二 · 故障预测</b><br>随机森林 RandomForest，基于8路传感器预测故障概率，测试集准确率 <b id="model-acc" style="color:var(--green);">-</b></div>
+        <div><b style="color:var(--cyan);">模块三 · 根因分析</b><br>基于特征重要度 Feature Importance，定位贡献度最高的故障诱因传感器并给出运维建议</div>
     </div>
-</div>
-
-<!-- 设备列表 -->
-<div class="panel">
-    <div class="panel-title">设备列表与状态</div>
-    <table>
-        <thead>
-            <tr>
-                <th>设备编号</th><th>设备名称</th><th>安装位置</th><th>数据样本数</th>
-                <th>异常样本数</th><th>异常占比</th><th>最新采集时间</th><th>操作</th>
-            </tr>
-        </thead>
-        <tbody id="device-tbody"></tbody>
-    </table>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+const AXIS_STYLE = { axisLabel:{color:'#7a8fb5'}, axisLine:{lineStyle:{color:'#1e3358'}}, splitLine:{lineStyle:{color:'rgba(30,51,88,0.4)'}} };
+
 async function loadStats(){
     const res = await api('/api/stats');
     const d = res.data;
     document.getElementById('s-data').textContent = d.total_data.toLocaleString();
-    document.getElementById('s-alerts').textContent = d.total_alerts;
+    document.getElementById('s-unhandled').textContent = d.unhandled;
     document.getElementById('s-high').textContent = d.high_risk;
-    document.getElementById('s-handled').textContent = d.handled;
 }
 
-async function loadDevices(){
-    const res = await api('/api/devices');
-    const tbody = document.getElementById('device-tbody');
-    document.getElementById('s-devices').textContent = res.data.length;
-    tbody.innerHTML = res.data.map(d=>{
-        const ratio = d.total_samples ? (d.abnormal_samples/d.total_samples*100).toFixed(1) : 0;
+async function loadDashboard(){
+    const res = await api('/api/dashboard');
+    const d = res.data;
+    document.getElementById('s-devices').textContent = d.device_health.length;
+    document.getElementById('s-health').textContent = d.avg_health + '%';
+
+    // 设备状态环形图
+    echarts.init(document.getElementById('chart-status')).setOption({
+        tooltip:{trigger:'item'},
+        legend:{bottom:0,textStyle:{color:'#d6e4ff'}},
+        series:[{
+            type:'pie', radius:['45%','70%'], center:['50%','45%'],
+            label:{color:'#d6e4ff',formatter:'{b}\n{c}台'},
+            data:[
+                {value:d.status_dist.healthy,name:'健康',itemStyle:{color:'#00e396'}},
+                {value:d.status_dist.warning,name:'关注',itemStyle:{color:'#ffb020'}},
+                {value:d.status_dist.critical,name:'故障',itemStyle:{color:'#ff4d5e'}}
+            ]
+        }]
+    });
+
+    // 各设备健康度柱状图
+    echarts.init(document.getElementById('chart-health')).setOption({
+        tooltip:{trigger:'axis'},
+        grid:{left:50,right:20,top:20,bottom:40},
+        xAxis:{type:'category',data:d.device_health.map(x=>x.device_id),...AXIS_STYLE},
+        yAxis:{type:'value',max:100,...AXIS_STYLE},
+        series:[{
+            type:'bar',barWidth:'45%',
+            data:d.device_health.map(x=>({
+                value:x.health_score,
+                itemStyle:{color:x.health_score>=90?'#00e396':x.health_score>=70?'#ffb020':'#ff4d5e',borderRadius:[4,4,0,0]}
+            })),
+            label:{show:true,position:'top',color:'#d6e4ff',formatter:'{c}%'}
+        }]
+    });
+
+    // 告警级别分布
+    const sd = d.severity_dist;
+    echarts.init(document.getElementById('chart-severity')).setOption({
+        tooltip:{trigger:'item'},
+        legend:{bottom:0,textStyle:{color:'#d6e4ff'}},
+        series:[{
+            type:'pie', radius:'65%', center:['50%','45%'],
+            label:{color:'#d6e4ff'},
+            data:[
+                {value:sd['高危']||0,name:'高危',itemStyle:{color:'#ff4d5e'}},
+                {value:sd['中危']||0,name:'中危',itemStyle:{color:'#ffb020'}},
+                {value:sd['已处理']||0,name:'已处理',itemStyle:{color:'#2b7fff'}}
+            ]
+        }]
+    });
+
+    // 设备健康档案表
+    document.getElementById('device-tbody').innerHTML = d.device_health.map(x=>{
+        const cls = x.health_status==='健康'?'dot-green':x.health_status==='关注'?'dot-yellow':'dot-red';
+        const tagCls = x.health_status==='健康'?'tag-normal':x.health_status==='关注'?'tag-mid':'tag-high';
         return `<tr>
-            <td><b>${d.device_id}</b></td>
-            <td>${d.device_name}</td>
-            <td>${d.location}</td>
-            <td>${d.total_samples.toLocaleString()}</td>
-            <td style="color:#f5222d;">${d.abnormal_samples.toLocaleString()}</td>
-            <td>${ratio}%</td>
-            <td>${d.latest_time||'-'}</td>
-            <td><a class="btn btn-primary btn-sm" href="/monitor?device=${d.device_id}">监控分析</a></td>
+            <td><b>${x.device_id}</b></td><td>${x.device_name}</td><td>${x.location}</td>
+            <td>${x.total.toLocaleString()}</td>
+            <td style="font-family:Consolas;">${x.health_score}%</td>
+            <td><span class="health-dot ${cls}"></span><span class="tag ${tagCls}">${x.health_status}</span></td>
+            <td style="color:${x.unhandled_alerts?'#ff4d5e':'#7a8fb5'}">${x.unhandled_alerts}</td>
+            <td><a class="btn btn-primary btn-sm" href="/monitor?device=${x.device_id}">监控分析</a></td>
         </tr>`;
     }).join('');
+
+    // 最新告警动态
+    const feed = document.getElementById('alert-feed');
+    feed.innerHTML = d.recent_alerts.length ? d.recent_alerts.map(a=>{
+        const cls = a.severity==='高危'?'high':a.severity==='中危'?'mid':'';
+        return `<div class="alert-feed-item ${cls}">
+            <span class="tag ${a.severity==='高危'?'tag-high':'tag-mid'}">${a.severity}</span>
+            <b>${a.device_id}</b> · ${a.timestamp}
+            <div style="margin-top:4px;color:var(--text-sub);">${a.root_cause||a.message||''}</div>
+        </div>`;
+    }).join('') : '<div class="empty">暂无告警，请先到监控页执行批量扫描</div>';
+}
+
+async function loadTrend(){
+    const res = await api('/api/alert_trend');
+    const d = res.data;
+    echarts.init(document.getElementById('chart-trend')).setOption({
+        tooltip:{trigger:'axis'},
+        legend:{data:['高危','中危'],textStyle:{color:'#d6e4ff'},top:0},
+        grid:{left:50,right:20,top:35,bottom:30},
+        xAxis:{type:'category',data:d.days,...AXIS_STYLE,axisLabel:{color:'#7a8fb5',fontSize:10}},
+        yAxis:{type:'value',...AXIS_STYLE},
+        series:[
+            {name:'高危',type:'line',smooth:true,data:d.high,itemStyle:{color:'#ff4d5e'},areaStyle:{color:'rgba(255,77,94,0.15)'}},
+            {name:'中危',type:'line',smooth:true,data:d.mid,itemStyle:{color:'#ffb020'},areaStyle:{color:'rgba(255,176,32,0.15)'}}
+        ]
+    });
 }
 
 async function loadModelInfo(){
     const res = await api('/api/model_info');
-    const d = res.data;
-    if(d.accuracy){
-        document.getElementById('model-acc').textContent = (d.accuracy*100).toFixed(2)+'%';
-    }
-    // 特征重要度柱状图
-    const chart = echarts.init(document.getElementById('importance-chart'));
-    const fi = d.feature_importance;
-    chart.setOption({
-        title:{text:'传感器特征重要度（根因分析依据）',textStyle:{fontSize:13}},
-        grid:{left:110,right:30,top:40,bottom:20},
-        xAxis:{type:'value'},
-        yAxis:{type:'category',data:fi.map(x=>x.feature_cn).reverse(),axisLabel:{fontSize:11}},
-        series:[{type:'bar',data:fi.map(x=>x.importance).reverse(),
-            itemStyle:{color:'#2b5aa0'},label:{show:true,position:'right',fontSize:10}}],
-        tooltip:{trigger:'axis'}
+    if(res.data.accuracy) document.getElementById('model-acc').textContent = (res.data.accuracy*100).toFixed(2)+'%';
+    echarts.init(document.getElementById('chart-importance')).setOption({
+        tooltip:{trigger:'axis'},
+        grid:{left:100,right:40,top:15,bottom:20},
+        xAxis:{type:'value',...AXIS_STYLE},
+        yAxis:{type:'category',data:res.data.feature_importance.map(x=>x.feature_cn).reverse(),...AXIS_STYLE,axisLabel:{color:'#7a8fb5',fontSize:11}},
+        series:[{type:'bar',data:res.data.feature_importance.map(x=>x.importance).reverse(),
+            itemStyle:{color:new echarts.graphic.LinearGradient(0,0,1,0,[{offset:0,color:'#1a5fd0'},{offset:1,color:'#00d4ff'}]),borderRadius:[0,4,4,0]},
+            label:{show:true,position:'right',color:'#d6e4ff',fontSize:10}}]
     });
 }
 
-loadStats();
-loadDevices();
-loadModelInfo();
+window.addEventListener('resize',()=>document.querySelectorAll('.chart-sm,.chart').forEach(el=>{
+    const inst = echarts.getInstanceByDom(el); if(inst) inst.resize();
+}));
+
+loadStats(); loadDashboard(); loadTrend(); loadModelInfo();
 </script>
 {% endblock %}

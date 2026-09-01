@@ -313,13 +313,120 @@ def api_stats():
     unhandled = conn.execute("SELECT COUNT(*) c FROM alerts WHERE status='未处理'").fetchone()["c"]
     handled = conn.execute("SELECT COUNT(*) c FROM alerts WHERE status='已处理'").fetchone()["c"]
     high_risk = conn.execute("SELECT COUNT(*) c FROM alerts WHERE severity='高危' AND status='未处理'").fetchone()["c"]
+    mid_risk = conn.execute("SELECT COUNT(*) c FROM alerts WHERE severity='中危' AND status='未处理'").fetchone()["c"]
     conn.close()
     return jsonify({"code": 0, "data": {
         "total_data": total_data,
         "total_alerts": total_alerts,
         "unhandled": unhandled,
         "handled": handled,
-        "high_risk": high_risk
+        "high_risk": high_risk,
+        "mid_risk": mid_risk
+    }})
+
+
+@app.route("/api/dashboard")
+def api_dashboard():
+    """管理驾驶舱聚合数据：设备健康度、状态分布、各设备异常对比、告警级别分布"""
+    conn = get_conn()
+    devices = conn.execute("SELECT * FROM devices ORDER BY device_id").fetchall()
+    device_health = []
+    status_dist = {"healthy": 0, "warning": 0, "critical": 0}
+    for d in devices:
+        stat = conn.execute(
+            "SELECT COUNT(*) total, SUM(anomaly) abnormal FROM sensor_data WHERE device_id=?",
+            (d["device_id"],)
+        ).fetchone()
+        total = stat["total"] or 1
+        abnormal = stat["abnormal"] or 0
+        # 健康度 = 正常样本占比 * 100
+        health_score = round((total - abnormal) / total * 100, 1)
+        if health_score >= 85:
+            health_status, status_dist["healthy"] = "健康", status_dist["healthy"] + 1
+        elif health_score >= 60:
+            health_status, status_dist["warning"] = "关注", status_dist["warning"] + 1
+        else:
+            health_status, status_dist["critical"] = "故障", status_dist["critical"] + 1
+        # 该设备未处理告警数
+        unhandled = conn.execute(
+            "SELECT COUNT(*) c FROM alerts WHERE device_id=? AND status='未处理'",
+            (d["device_id"],)
+        ).fetchone()["c"]
+        device_health.append({
+            "device_id": d["device_id"],
+            "device_name": d["device_name"],
+            "location": d["location"],
+            "total": total,
+            "abnormal": abnormal,
+            "health_score": health_score,
+            "health_status": health_status,
+            "unhandled_alerts": unhandled
+        })
+
+    # 告警级别分布
+    severity_dist = {}
+    for sev in ["高危", "中危"]:
+        severity_dist[sev] = conn.execute(
+            "SELECT COUNT(*) c FROM alerts WHERE severity=?", (sev,)
+        ).fetchone()["c"]
+    severity_dist["已处理"] = conn.execute(
+        "SELECT COUNT(*) c FROM alerts WHERE status='已处理'"
+    ).fetchone()["c"]
+
+    # 最近5条告警
+    recent_alerts = [dict(r) for r in conn.execute(
+        "SELECT * FROM alerts ORDER BY timestamp DESC LIMIT 5"
+    ).fetchall()]
+    conn.close()
+
+    # 全厂综合健康率
+    avg_health = round(sum(d["health_score"] for d in device_health) / len(device_health), 1) if device_health else 0
+    return jsonify({"code": 0, "data": {
+        "device_health": device_health,
+        "status_dist": status_dist,
+        "severity_dist": severity_dist,
+        "avg_health": avg_health,
+        "recent_alerts": recent_alerts
+    }})
+
+
+@app.route("/api/alert_trend")
+def api_alert_trend():
+    """告警时间趋势：按日期聚合高危/中危告警数量"""
+    conn = get_conn()
+    rows = conn.execute("""
+        SELECT substr(timestamp,1,10) AS day, severity, COUNT(*) AS cnt
+        FROM alerts GROUP BY day, severity ORDER BY day
+    """).fetchall()
+    conn.close()
+    days = sorted(set(r["day"] for r in rows))
+    high = [sum(r["cnt"] for r in rows if r["day"] == d and r["severity"] == "高危") for d in days]
+    mid = [sum(r["cnt"] for r in rows if r["day"] == d and r["severity"] == "中危") for d in days]
+    return jsonify({"code": 0, "data": {"days": days, "high": high, "mid": mid}})
+
+
+@app.route("/api/device_health_detail")
+def api_device_health_detail():
+    """单设备健康度详情：各传感器均值、正常/异常样本、用于雷达图"""
+    device_id = request.args.get("device_id", "PUMP-001")
+    conn = get_conn()
+    # 正常样本各传感器均值
+    normal_row = conn.execute(
+        f"SELECT AVG({c}) m FROM sensor_data WHERE device_id=? AND anomaly=0",
+        (device_id,)
+    ).fetchall() if False else None
+    # 用一条SQL取全部传感器均值
+    avg_sql = "SELECT " + ", ".join([f"AVG({c.replace(' ','_')}) AS {c.replace(' ','_')}" for c in SENSOR_COLS])
+    normal_avg = conn.execute(
+        avg_sql + " FROM sensor_data WHERE device_id=? AND anomaly=0", (device_id,)
+    ).fetchone()
+    abnormal_avg = conn.execute(
+        avg_sql + " FROM sensor_data WHERE device_id=? AND anomaly=1", (device_id,)
+    ).fetchone()
+    conn.close()
+    return jsonify({"code": 0, "data": {
+        "normal_avg": {c: round(normal_avg[c.replace(' ', '_')] or 0, 3) for c in SENSOR_COLS},
+        "abnormal_avg": {c: round(abnormal_avg[c.replace(' ', '_')] or 0, 3) for c in SENSOR_COLS}
     }})
 
 

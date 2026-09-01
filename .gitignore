@@ -1,0 +1,12 @@
+# Python 缓存
+__pycache__/
+*.pyc
+*.pyo
+
+# 临时文件
+_*.py
+_*.txt
+
+# 系统文件
+Thumbs.db
+.DS_Store

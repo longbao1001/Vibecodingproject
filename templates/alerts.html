@@ -1,14 +1,30 @@
 {% extends "base.html" %}
 {% block title %}告警面板 - 智能故障预警系统{% endblock %}
 {% block content %}
-<h2 class="page-title">故障告警面板</h2>
+<h2 class="page-title">故障告警管理面板</h2>
+
+<div class="stat-grid" style="grid-template-columns:repeat(4,1fr);">
+    <div class="stat-card danger"><div class="label">高危告警</div><div class="value" id="s-high">-</div></div>
+    <div class="stat-card warn"><div class="label">中危告警</div><div class="value" id="s-mid">-</div></div>
+    <div class="stat-card"><div class="label">未处理告警</div><div class="value" id="s-unhandled">-</div></div>
+    <div class="stat-card success"><div class="label">已处理告警</div><div class="value" id="s-handled">-</div></div>
+</div>
+
+<div class="panel-row">
+    <div class="panel">
+        <div class="panel-title">告警级别占比</div>
+        <div id="chart-sev" class="chart-sm"></div>
+    </div>
+    <div class="panel">
+        <div class="panel-title">告警时间趋势</div>
+        <div id="chart-trend" class="chart-sm"></div>
+    </div>
+</div>
 
 <div class="panel">
     <div class="toolbar">
         <label>设备筛选：</label>
-        <select id="device-filter">
-            <option value="">全部设备</option>
-        </select>
+        <select id="device-filter"><option value="">全部设备</option></select>
         <label>状态筛选：</label>
         <select id="status-filter">
             <option value="">全部状态</option>
@@ -19,21 +35,21 @@
         <button class="btn btn-warn" onclick="scanAll()">一键扫描全部设备</button>
     </div>
     <table>
-        <thead>
-            <tr>
-                <th>ID</th><th>设备编号</th><th>采集时间</th><th>告警类型</th>
-                <th>级别</th><th>异常分数</th><th>故障概率</th>
-                <th>根因分析</th><th>状态</th><th>操作</th>
-            </tr>
-        </thead>
+        <thead><tr>
+            <th>ID</th><th>设备编号</th><th>采集时间</th><th>告警类型</th>
+            <th>级别</th><th>异常分数</th><th>故障概率</th>
+            <th>根因分析</th><th>状态</th><th>操作</th>
+        </tr></thead>
         <tbody id="alert-tbody"></tbody>
     </table>
-    <div class="empty" id="alert-empty" style="display:none;">暂无告警数据，请先在传感器监控页执行批量扫描</div>
+    <div class="empty" id="alert-empty" style="display:none;">暂无告警数据，请点击"一键扫描全部设备"或到监控页执行批量扫描</div>
 </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
+const AXIS_STYLE = { axisLabel:{color:'#7a8fb5'}, axisLine:{lineStyle:{color:'#1e3358'}}, splitLine:{lineStyle:{color:'rgba(30,51,88,0.4)'}} };
+
 async function loadDevices(){
     const res = await api('/api/devices');
     document.getElementById('device-filter').innerHTML =
@@ -41,50 +57,73 @@ async function loadDevices(){
         res.data.map(d=>`<option value="${d.device_id}">${d.device_id} ${d.device_name}</option>`).join('');
 }
 
+async function loadStats(){
+    const res = await api('/api/stats');
+    const d = res.data;
+    document.getElementById('s-high').textContent = d.high_risk;
+    document.getElementById('s-mid').textContent = d.mid_risk||0;
+    document.getElementById('s-unhandled').textContent = d.unhandled;
+    document.getElementById('s-handled').textContent = d.handled;
+    // 级别占比
+    echarts.init(document.getElementById('chart-sev')).setOption({
+        tooltip:{trigger:'item'},legend:{bottom:0,textStyle:{color:'#d6e4ff'}},
+        series:[{type:'pie',radius:['40%','68%'],center:['50%','45%'],label:{color:'#d6e4ff'},
+            data:[
+                {value:d.high_risk,name:'高危',itemStyle:{color:'#ff4d5e'}},
+                {value:d.mid_risk||0,name:'中危',itemStyle:{color:'#ffb020'}},
+                {value:d.handled,name:'已处理',itemStyle:{color:'#2b7fff'}}
+            ]}]
+    });
+}
+
+async function loadTrend(){
+    const res = await api('/api/alert_trend');
+    const d = res.data;
+    echarts.init(document.getElementById('chart-trend')).setOption({
+        tooltip:{trigger:'axis'},legend:{data:['高危','中危'],textStyle:{color:'#d6e4ff'},top:0},
+        grid:{left:50,right:20,top:35,bottom:30},
+        xAxis:{type:'category',data:d.days,...AXIS_STYLE,axisLabel:{color:'#7a8fb5',fontSize:10}},
+        yAxis:{type:'value',...AXIS_STYLE},
+        series:[
+            {name:'高危',type:'bar',stack:'a',data:d.high,itemStyle:{color:'#ff4d5e'}},
+            {name:'中危',type:'bar',stack:'a',data:d.mid,itemStyle:{color:'#ffb020'}}
+        ]
+    });
+}
+
 async function loadAlerts(){
     const device = document.getElementById('device-filter').value;
     const status = document.getElementById('status-filter').value;
     const res = await api(`/api/alerts?device_id=${device}&status=${status}`);
     const rows = res.data;
-    const tbody = document.getElementById('alert-tbody');
-    document.getElementById('alert-empty').style.display = rows.length ? 'none':'block';
-    tbody.innerHTML = rows.map(a=>{
+    document.getElementById('alert-empty').style.display = rows.length?'none':'block';
+    document.getElementById('alert-tbody').innerHTML = rows.map(a=>{
         const sevTag = a.severity==='高危'?'tag-high':a.severity==='中危'?'tag-mid':'tag-normal';
         const statusTag = a.status==='已处理'?'tag-handled':'tag-high';
         return `<tr>
-            <td>${a.id}</td>
-            <td><b>${a.device_id}</b></td>
-            <td>${a.timestamp}</td>
-            <td>${a.alert_type}</td>
+            <td>${a.id}</td><td><b>${a.device_id}</b></td><td>${a.timestamp}</td><td>${a.alert_type}</td>
             <td><span class="tag ${sevTag}">${a.severity}</span></td>
-            <td>${a.anomaly_score}</td>
-            <td>${(a.fault_prob*100).toFixed(1)}%</td>
+            <td>${a.anomaly_score}</td><td>${(a.fault_prob*100).toFixed(1)}%</td>
             <td style="max-width:280px;font-size:12px;">${a.root_cause||'-'}</td>
             <td><span class="tag ${statusTag}">${a.status}</span></td>
             <td>${a.status==='未处理'?`<button class="btn btn-success btn-sm" onclick="handleAlert(${a.id})">处理</button>`:'-'}</td>
         </tr>`;
     }).join('');
+    loadStats(); loadTrend();
 }
 
 async function handleAlert(id){
     const action = prompt('请输入运维处置措施：','现场巡检确认，排查对应传感器部件，设备恢复正常');
     if(action===null) return;
-    const res = await api('/api/alerts/handle',{
-        method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({alert_id:id,action:action})
-    });
-    alert(res.msg);
-    loadAlerts();
+    const res = await api('/api/alerts/handle',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({alert_id:id,action:action})});
+    alert(res.msg); loadAlerts();
 }
 
 async function scanAll(){
     const devices = ['PUMP-001','PUMP-002','PUMP-003','PUMP-004'];
     let total = 0;
     for(const d of devices){
-        const res = await api('/api/scan',{
-            method:'POST',headers:{'Content-Type':'application/json'},
-            body:JSON.stringify({device_id:d,limit:100})
-        });
+        const res = await api('/api/scan',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({device_id:d,limit:100})});
         total += res.new_alerts;
     }
     alert(`全部设备扫描完成，共新增 ${total} 条告警`);
@@ -93,6 +132,7 @@ async function scanAll(){
 
 document.getElementById('device-filter').addEventListener('change',loadAlerts);
 document.getElementById('status-filter').addEventListener('change',loadAlerts);
+window.addEventListener('resize',()=>document.querySelectorAll('.chart-sm').forEach(el=>{const i=echarts.getInstanceByDom(el);if(i)i.resize();}));
 (async function init(){await loadDevices();await loadAlerts();})();
 </script>
 {% endblock %}
