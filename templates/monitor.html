@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% block title %}传感器监控 - 智能故障预警系统{% endblock %}
+{% block content %}
+<h2 class="page-title">传感器监控与智能分析</h2>
+
+<div class="panel">
+    <div class="toolbar">
+        <label>选择设备：</label>
+        <select id="device-select"></select>
+        <label>显示点数：</label>
+        <select id="limit-select">
+            <option value="100">最近100条</option>
+            <option value="200" selected>最近200条</option>
+            <option value="400">最近400条</option>
+        </select>
+        <button class="btn btn-primary" onclick="loadSensorData()">刷新曲线</button>
+        <button class="btn btn-warn" onclick="runAnalyze()">对最新数据智能分析</button>
+        <button class="btn btn-success" onclick="runScan()">批量扫描生成告警</button>
+    </div>
+    <div class="chart-row">
+        <div id="chart-vibration" class="chart"></div>
+        <div id="chart-pressure" class="chart"></div>
+    </div>
+    <div class="chart-row" style="margin-top:20px;">
+        <div id="chart-temp" class="chart"></div>
+        <div id="chart-flow" class="chart"></div>
+    </div>
+</div>
+
+<!-- 智能分析结果 -->
+<div class="panel analyze-result" id="analyze-panel" style="display:none;">
+    <div class="panel-title">三大算法模块分析结果 <span id="analyze-time" style="font-size:13px;color:#888;font-weight:normal;"></span></div>
+    <div class="result-grid">
+        <div class="result-box">
+            <div class="r-label">模块一：时序异常检测（孤立森林）</div>
+            <div class="r-value" id="r-anomaly">-</div>
+            <div style="margin-top:8px;font-size:13px;color:#666;">异常分数：<span id="r-anomaly-score">-</span></div>
+        </div>
+        <div class="result-box">
+            <div class="r-label">模块二：故障预测（随机森林）</div>
+            <div class="r-value" id="r-fault">-</div>
+            <div style="margin-top:8px;font-size:13px;color:#666;">故障概率：<span id="r-fault-prob">-</span></div>
+        </div>
+        <div class="result-box">
+            <div class="r-label">综合预警级别</div>
+            <div class="r-value" id="r-severity">-</div>
+            <div style="margin-top:8px;font-size:13px;color:#666;" id="r-alert-type">-</div>
+        </div>
+    </div>
+    <div class="result-box">
+        <div class="r-label" style="font-weight:bold;margin-bottom:12px;">模块三：故障根因分析（特征重要度 Top3）</div>
+        <div id="cause-list"></div>
+        <div style="margin-top:12px;padding:12px;background:#fffbe6;border-radius:6px;font-size:14px;" id="cause-conclusion"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let charts = {};
+const SENSOR_MAP = {
+    Accelerometer1RMS:{name:'1号振动加速度',color:'#2b5aa0'},
+    Accelerometer2RMS:{name:'2号振动加速度',color:'#5b8fd6'},
+    Current:{name:'电机电流',color:'#faad14'},
+    Pressure:{name:'压力',color:'#f5222d'},
+    Temperature:{name:'温度',color:'#fa541c'},
+    Thermocouple:{name:'热电偶温度',color:'#eb2f96'},
+    Voltage:{name:'电机电压',color:'#52c41a'},
+    Volume_Flow_RateRMS:{name:'流量',color:'#13c2c2'}
+};
+
+async function loadDevices(){
+    const res = await api('/api/devices');
+    const sel = document.getElementById('device-select');
+    sel.innerHTML = res.data.map(d=>`<option value="${d.device_id}">${d.device_id} ${d.device_name}</option>`).join('');
+    // URL参数指定设备
+    const params = new URLSearchParams(location.search);
+    if(params.get('device')) sel.value = params.get('device');
+}
+
+async function loadSensorData(){
+    const device = document.getElementById('device-select').value;
+    const limit = document.getElementById('limit-select').value;
+    const res = await api(`/api/sensor_data?device_id=${device}&limit=${limit}`);
+    const data = res.data;
+    const times = data.map(d=>d.timestamp.slice(5));
+    // 异常点标记
+    const abnormalPoints = data.map(d=> d.anomaly===1 ? {coord:[d.timestamp.slice(5),d.Accelerometer1RMS]} : null).filter(x=>x);
+
+    renderChart('chart-vibration', times, data, ['Accelerometer1RMS','Accelerometer2RMS'], '振动加速度时序曲线');
+    renderChart('chart-pressure', times, data, ['Pressure','Current'], '压力与电流时序曲线');
+    renderChart('chart-temp', times, data, ['Temperature','Thermocouple'], '温度时序曲线');
+    renderChart('chart-flow', times, data, ['Volume_Flow_RateRMS','Voltage'], '流量与电压时序曲线');
+}
+
+function renderChart(domId, times, data, keys, title){
+    if(!charts[domId]) charts[domId] = echarts.init(document.getElementById(domId));
+    const series = keys.map(k=>({
+        name: SENSOR_MAP[k].name,
+        type:'line',
+        data: data.map(d=>d[k]),
+        showSymbol:false,
+        smooth:true,
+        lineStyle:{width:1.5},
+        itemStyle:{color:SENSOR_MAP[k].color}
+    }));
+    charts[domId].setOption({
+        title:{text:title,textStyle:{fontSize:14}},
+        tooltip:{trigger:'axis'},
+        legend:{top:25,textStyle:{fontSize:11}},
+        grid:{left:60,right:20,top:60,bottom:30},
+        xAxis:{type:'category',data:times,axisLabel:{fontSize:10}},
+        yAxis:{type:'value',scale:true},
+        series
+    }, true);
+}
+
+async function runAnalyze(){
+    const device = document.getElementById('device-select').value;
+    const res = await api('/api/analyze',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({device_id:device})
+    });
+    if(res.code!==0){alert(res.msg);return;}
+    const d = res.data;
+    document.getElementById('analyze-panel').style.display='block';
+    document.getElementById('analyze-time').textContent = `设备：${d.device_id} | 时间：${d.timestamp}`;
+
+    // 模块一
+    const a = d.anomaly_detection;
+    const aEl = document.getElementById('r-anomaly');
+    aEl.textContent = a.is_anomaly===1 ? '检测到异常' : '状态正常';
+    aEl.className = 'r-value ' + (a.is_anomaly===1?'r-danger':'r-ok');
+    document.getElementById('r-anomaly-score').textContent = a.anomaly_score;
+
+    // 模块二
+    const f = d.fault_prediction;
+    const fEl = document.getElementById('r-fault');
+    fEl.textContent = `故障概率 ${(f.fault_prob*100).toFixed(1)}%`;
+    fEl.className = 'r-value ' + (f.fault_prob>=0.7?'r-danger':f.fault_prob>=0.4?'r-warn':'r-ok');
+    document.getElementById('r-fault-prob').textContent = (f.fault_prob*100).toFixed(1)+'% / 正常概率 '+(f.normal_prob*100).toFixed(1)+'%';
+
+    // 综合
+    const sEl = document.getElementById('r-severity');
+    sEl.textContent = d.severity;
+    sEl.className = 'r-value ' + (d.severity==='高危'?'r-danger':d.severity==='中危'?'r-warn':'r-ok');
+    document.getElementById('r-alert-type').textContent = d.alert_type;
+
+    // 模块三：根因
+    document.getElementById('cause-list').innerHTML = d.root_cause.root_causes.map(c=>`
+        <div class="cause-item">
+            <span><b>Top${c.rank}</b> ${c.feature_cn}（${c.feature}）</span>
+            <span>
+                <span class="progress-bar"><span class="progress-inner" style="width:${c.importance*100*3}%"></span></span>
+                ${(c.importance*100).toFixed(1)}%
+            </span>
+        </div>
+        <div style="font-size:13px;color:#666;padding:0 0 8px 0;">当前值：${c.current_value} ｜ 建议：${c.suggestion}</div>
+    `).join('');
+    document.getElementById('cause-conclusion').textContent = d.root_cause.conclusion;
+}
+
+async function runScan(){
+    const device = document.getElementById('device-select').value;
+    const limit = document.getElementById('limit-select').value;
+    const res = await api('/api/scan',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({device_id:device,limit:limit})
+    });
+    alert(res.msg);
+}
+
+window.addEventListener('resize',()=>Object.values(charts).forEach(c=>c.resize()));
+document.getElementById('device-select').addEventListener('change',loadSensorData);
+document.getElementById('limit-select').addEventListener('change',loadSensorData);
+
+(async function init(){
+    await loadDevices();
+    await loadSensorData();
+})();
+</script>
+{% endblock %}

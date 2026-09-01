@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block title %}设备总览 - 智能故障预警系统{% endblock %}
+{% block content %}
+<h2 class="page-title">设备总览</h2>
+
+<!-- 统计卡片 -->
+<div class="stat-grid">
+    <div class="stat-card"><div class="label">接入设备数</div><div class="value" id="s-devices">-</div></div>
+    <div class="stat-card"><div class="label">传感器数据总量</div><div class="value" id="s-data">-</div></div>
+    <div class="stat-card warn"><div class="label">告警总数</div><div class="value" id="s-alerts">-</div></div>
+    <div class="stat-card danger"><div class="label">未处理高危告警</div><div class="value" id="s-high">-</div></div>
+    <div class="stat-card success"><div class="label">已处理告警</div><div class="value" id="s-handled">-</div></div>
+</div>
+
+<!-- 模型信息 -->
+<div class="panel">
+    <div class="panel-title">算法模型信息</div>
+    <div id="model-info" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+        <div>
+            <p style="margin-bottom:10px;">模块一：孤立森林（IsolationForest）时序异常检测</p>
+            <p style="margin-bottom:10px;">模块二：随机森林（RandomForest）故障预测，测试集准确率：
+                <b id="model-acc" style="color:#52c41a;font-size:18px;">-</b>
+            </p>
+            <p style="margin-bottom:10px;">模块三：基于特征重要度的故障根因分析</p>
+        </div>
+        <div id="importance-chart" class="chart" style="height:240px;"></div>
+    </div>
+</div>
+
+<!-- 设备列表 -->
+<div class="panel">
+    <div class="panel-title">设备列表与状态</div>
+    <table>
+        <thead>
+            <tr>
+                <th>设备编号</th><th>设备名称</th><th>安装位置</th><th>数据样本数</th>
+                <th>异常样本数</th><th>异常占比</th><th>最新采集时间</th><th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="device-tbody"></tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function loadStats(){
+    const res = await api('/api/stats');
+    const d = res.data;
+    document.getElementById('s-data').textContent = d.total_data.toLocaleString();
+    document.getElementById('s-alerts').textContent = d.total_alerts;
+    document.getElementById('s-high').textContent = d.high_risk;
+    document.getElementById('s-handled').textContent = d.handled;
+}
+
+async function loadDevices(){
+    const res = await api('/api/devices');
+    const tbody = document.getElementById('device-tbody');
+    document.getElementById('s-devices').textContent = res.data.length;
+    tbody.innerHTML = res.data.map(d=>{
+        const ratio = d.total_samples ? (d.abnormal_samples/d.total_samples*100).toFixed(1) : 0;
+        return `<tr>
+            <td><b>${d.device_id}</b></td>
+            <td>${d.device_name}</td>
+            <td>${d.location}</td>
+            <td>${d.total_samples.toLocaleString()}</td>
+            <td style="color:#f5222d;">${d.abnormal_samples.toLocaleString()}</td>
+            <td>${ratio}%</td>
+            <td>${d.latest_time||'-'}</td>
+            <td><a class="btn btn-primary btn-sm" href="/monitor?device=${d.device_id}">监控分析</a></td>
+        </tr>`;
+    }).join('');
+}
+
+async function loadModelInfo(){
+    const res = await api('/api/model_info');
+    const d = res.data;
+    if(d.accuracy){
+        document.getElementById('model-acc').textContent = (d.accuracy*100).toFixed(2)+'%';
+    }
+    // 特征重要度柱状图
+    const chart = echarts.init(document.getElementById('importance-chart'));
+    const fi = d.feature_importance;
+    chart.setOption({
+        title:{text:'传感器特征重要度（根因分析依据）',textStyle:{fontSize:13}},
+        grid:{left:110,right:30,top:40,bottom:20},
+        xAxis:{type:'value'},
+        yAxis:{type:'category',data:fi.map(x=>x.feature_cn).reverse(),axisLabel:{fontSize:11}},
+        series:[{type:'bar',data:fi.map(x=>x.importance).reverse(),
+            itemStyle:{color:'#2b5aa0'},label:{show:true,position:'right',fontSize:10}}],
+        tooltip:{trigger:'axis'}
+    });
+}
+
+loadStats();
+loadDevices();
+loadModelInfo();
+</script>
+{% endblock %}

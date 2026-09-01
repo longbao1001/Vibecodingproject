@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}智能故障预警系统{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">车间设备智能故障预警系统</div>
+        <div class="nav-links">
+            <a href="/" id="nav-index">设备总览</a>
+            <a href="/monitor" id="nav-monitor">传感器监控</a>
+            <a href="/alerts" id="nav-alerts">告警面板</a>
+            <a href="/history" id="nav-history">运维记录</a>
+        </div>
+    </nav>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script>
+        // 高亮当前导航
+        (function(){
+            const path = location.pathname;
+            const map = {'/':'nav-index','/monitor':'nav-monitor','/alerts':'nav-alerts','/history':'nav-history'};
+            const id = map[path];
+            if(id) document.getElementById(id).classList.add('active');
+        })();
+        // 通用请求封装
+        async function api(url, options){
+            const resp = await fetch(url, options);
+            return resp.json();
+        }
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -32,29 +32,75 @@
 ## 项目目录结构
 ```
 .
+├── app.py                      # Flask 主应用（页面路由 + 后端API）
+├── database.py                 # SQLite 数据库模块（建表、数据入库、查询）
+├── train_model.py              # 模型训练与数据库初始化脚本
+├── preprocess.py               # 数据预处理程序
+├── requirements.txt            # Python 依赖清单
+├── models/                     # 三大算法模块
+│   ├── anomaly_detection.py    #   模块一：孤立森林时序异常检测
+│   ├── fault_prediction.py     #   模块二：随机森林故障预测
+│   ├── root_cause.py           #   模块三：特征重要度根因分析
+│   └── saved/                  #   训练好的模型文件（可直接加载）
+│       ├── anomaly_iforest.pkl
+│       ├── fault_rf.pkl
+│       └── model_metrics.json
+├── templates/                  # 前端页面（Jinja2模板）
+│   ├── base.html               #   基础模板（导航栏）
+│   ├── index.html              #   设备总览页
+│   ├── monitor.html            #   传感器监控与智能分析页
+│   ├── alerts.html             #   告警面板页
+│   └── history.html            #   运维记录页
+├── static/css/style.css        # 前端样式
 ├── data/
-│   ├── README.md              # 数据集说明文档
-│   ├── SKAB-master/           # SKAB 原始数据集（anomaly-free/valve1/valve2/other）
+│   ├── README.md               # 数据集说明文档
+│   ├── equipment.db            # SQLite 数据库（已入库46669条数据）
+│   ├── SKAB-master/            # SKAB 原始数据集
 │   └── processed/
-│       ├── out.csv            # 预处理后输出数据（46669条）
-│       └── data_report.md     # 数据预处理质量报告
-├── prompt/
-│   ├── README.md              # Prompt 档案说明
-│   ├── 01_学习笔记阶段.json    # 第一阶段 AI 对话记录
-│   ├── 02_选题方案设计阶段.json # 第二阶段 AI 对话记录
-│   └── 03_数据预处理阶段.json   # 第三阶段 AI 对话记录
-├── preprocess.py              # 数据预处理程序
-├── 学习笔记.md                 # Vibe-Coding 学习笔记
-├── 选题说明.md                 # 选题说明文档
-└── 方案设计.md                 # 方案设计文档
+│       ├── out.csv             # 预处理后输出数据（46669条）
+│       └── data_report.md      # 数据预处理质量报告
+├── prompt/                     # AI 对话过程档案
+│   ├── 01_学习笔记阶段.json
+│   ├── 02_选题方案设计阶段.json
+│   ├── 03_数据预处理阶段.json
+│   └── 04_系统开发阶段.json
+├── 学习笔记.md / 选题说明.md / 方案设计.md
 ```
+
+## 系统快速启动
+```bash
+# 1. 安装依赖
+pip install -r requirements.txt
+
+# 2. （可选）重新训练模型并初始化数据库；仓库已附带训练好的模型和数据库，可跳过
+python train_model.py
+
+# 3. 启动系统
+python app.py
+
+# 4. 浏览器访问
+http://127.0.0.1:5000
+```
+
+## 系统功能（B/S 架构）
+1. **设备总览**（/）：4台虚拟设备状态统计、传感器数据量、算法模型信息、特征重要度图表
+2. **传感器监控**（/monitor）：8路传感器 ECharts 时序曲线、单条数据三大算法智能分析、批量扫描生成告警
+3. **告警面板**（/alerts）：告警列表、级别筛选、一键扫描全部设备、告警处置
+4. **运维记录**（/history）：告警处置后的运维措施历史记录
+
+### 三大算法模块
+| 模块 | 算法 | 课程技术方向 | 输出 |
+|------|------|-------------|------|
+| 时序异常检测 | IsolationForest 孤立森林 | 时序数据挖掘与异常检测 | 是否异常 + 异常分数 |
+| 故障预测 | RandomForest 随机森林 | 机器学习故障预测模型 | 故障概率（测试集准确率93.04%） |
+| 根因分析 | 特征重要度 Feature Importance | 智能决策-故障根因分析 | Top3根因传感器 + 运维建议 |
 
 ## 技术栈
 - **后端语言**：Python
-- **Web 框架**：Flask（后续阶段开发）
+- **Web 框架**：Flask（页面路由 + RESTful API）
 - **算法库**：Pandas、NumPy、Scikit-learn
-- **数据库**：SQLite（后续阶段开发）
-- **前端**：HTML + CSS + JavaScript + ECharts（后续阶段开发）
+- **数据库**：SQLite（设备表/传感器数据表/告警表/运维记录表）
+- **前端**：HTML + CSS + JavaScript + ECharts（时序曲线可视化）
 - **AI 辅助工具**：豆包（doubao）
 - **版本控制**：Git + GitHub
 
@@ -68,8 +114,8 @@
 ## 开发计划
 1. **D1-D2**：GitHub 仓库创建，Vibe-Coding 学习笔记提交 ✅
 2. **D3-D5**：选题说明、方案设计文档完成 ✅
-3. **D6**：数据集准备、数据预处理、过程档案归档 ✅（当前阶段）
-4. **D7-D8**：后端服务、数据库、三大算法模块、前端页面开发
+3. **D6**：数据集准备、数据预处理、过程档案归档 ✅
+4. **D7-D8**：后端服务、数据库、三大算法模块、前端页面开发 ✅（当前阶段）
 5. **D9**：系统集成调试，课程设计报告撰写，演示视频录制
 6. **D10**：答辩准备
 
