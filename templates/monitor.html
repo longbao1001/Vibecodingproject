@@ -105,6 +105,13 @@ function gaugeOption(value, max, color, unit, title){
     };
 }
 
+// 复用已有ECharts实例，避免重复init警告
+function renderGauge(domId, option){
+    const dom = document.getElementById(domId);
+    const chart = echarts.getInstanceByDom(dom) || echarts.init(dom);
+    chart.setOption(option, true);
+}
+
 async function loadDevices(){
     const res = await api('/api/devices');
     const sel = document.getElementById('device-select');
@@ -180,10 +187,10 @@ async function runAnalyze(){
     // 三个仪表盘
     const healthScore = (1 - d.fault_prediction.fault_prob) * 100;
     const healthColor = healthScore>=70?'#00e396':healthScore>=40?'#ffb020':'#ff4d5e';
-    echarts.init(document.getElementById('gauge-health')).setOption(gaugeOption(healthScore,100,healthColor,'%','健康度'));
-    echarts.init(document.getElementById('gauge-fault')).setOption(gaugeOption(d.fault_prediction.fault_prob*100,100,'#ff4d5e','%','故障概率'));
+    renderGauge('gauge-health', gaugeOption(healthScore,100,healthColor,'%','健康度'));
+    renderGauge('gauge-fault', gaugeOption(d.fault_prediction.fault_prob*100,100,'#ff4d5e','%','故障概率'));
     const aScore = Math.max(0, d.anomaly_detection.anomaly_score) * 100;
-    echarts.init(document.getElementById('gauge-anomaly')).setOption(gaugeOption(Math.min(aScore,100),100,'#ffb020','','异常分数'));
+    renderGauge('gauge-anomaly', gaugeOption(Math.min(aScore,100),100,'#ffb020','','异常分数'));
 
     // 模块结果文字
     const a = d.anomaly_detection;
@@ -222,8 +229,10 @@ async function runScan(){
 }
 
 window.addEventListener('resize',()=>Object.values(charts).forEach(c=>c&&c.resize()));
-document.getElementById('device-select').addEventListener('change',loadSensorData);
+// 切换设备时：重新加载曲线并自动执行一次智能诊断，保证仪表盘有数据
+document.getElementById('device-select').addEventListener('change',async ()=>{ await loadSensorData(); runAnalyze(); });
 document.getElementById('limit-select').addEventListener('change',loadSensorData);
-(async function init(){ await loadDevices(); await loadSensorData(); })();
+// 页面初始化：加载设备、曲线后自动分析最新一条数据，填充三大仪表盘
+(async function init(){ await loadDevices(); await loadSensorData(); runAnalyze(); })();
 </script>
 {% endblock %}
