@@ -41,9 +41,10 @@
 </div>
 
 <!-- 设备明细表 + 最近告警 -->
-<div class="panel-row">
+<div class="panel-row panel-row-wide">
     <div class="panel">
         <div class="panel-title">设备健康档案</div>
+        <div class="table-wrap">
         <table>
             <thead><tr>
                 <th>设备编号</th><th>设备名称</th><th>位置</th><th>样本数</th>
@@ -51,6 +52,7 @@
             </tr></thead>
             <tbody id="device-tbody"></tbody>
         </table>
+        </div>
     </div>
     <div class="panel">
         <div class="panel-title">最新告警动态</div>
@@ -144,7 +146,7 @@ async function loadDashboard(){
             <td style="font-family:Consolas;">${x.health_score}%</td>
             <td><span class="health-dot ${cls}"></span><span class="tag ${tagCls}">${x.health_status}</span></td>
             <td style="color:${x.unhandled_alerts?'#ff4d5e':'#7a8fb5'}">${x.unhandled_alerts}</td>
-            <td><a class="btn btn-primary btn-sm" href="/monitor?device=${x.device_id}">监控分析</a></td>
+            <td><a class="btn btn-cyan btn-sm" href="/monitor?device=${x.device_id}">监控分析</a></td>
         </tr>`;
     }).join('');
 
