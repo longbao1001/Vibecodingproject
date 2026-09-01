@@ -1,0 +1,46 @@
+{
+  "阶段": "第六阶段 系统自动化测试",
+  "日期": "2026-09-02",
+  "使用工具": "豆包（doubao）",
+  "任务目标": "根据任务书第4.5条'项目须通过自带的自动化测试'要求，编写覆盖数据库、算法模块、API接口、业务闭环、页面路由的完整自动化测试脚本，确保系统可重复验证",
+  "任务书依据": "第3.5条'通过自动化测试，达到可现场演示状态'；第4.5条'项目须通过自带的自动化测试'；第7条成果考核中程序依据'代码测试质量'评分",
+  "对话记录": [
+    {
+      "序号": 1,
+      "prompt": "现在开始做自动化测试脚本",
+      "AI输出": "先梳理app.py全部13个路由、三大算法模块函数签名与返回结构、SQLite4张表结构，确定5大类测试范围",
+      "人工修正": "确认使用标准库unittest（无需额外安装pytest），用Flask test_client无需启动服务器，测试可重复运行"
+    },
+    {
+      "序号": 2,
+      "prompt": "编写test_system.py",
+      "AI输出": "编写5个测试类共38个用例：TestDatabase(7)、TestAlgorithms(8)、TestAPI(17)、TestBusinessFlow(5)、TestPages(4)",
+      "人工修正": "首次运行报SyntaxError（bytes字面量不能含中文），将4个页面测试的b'中文'改为resp.data.decode('utf-8')后用字符串in判断"
+    },
+    {
+      "序号": 3,
+      "prompt": "运行测试并修复",
+      "AI输出": "修复后重新运行，38个用例全部通过，耗时1.257秒",
+      "人工修正": "sklearn版本警告（模型1.9.0训练、当前1.7.2加载）不影响测试结果，属环境差异非代码问题"
+    }
+  ],
+  "测试覆盖详情": {
+    "TestDatabase": "4张表存在性、4台设备编号映射、数据总量46669、各设备数据量(9401/18162/4312/14794)、8路传感器列、无空值",
+    "TestAlgorithms": "三模型加载、detect_anomaly返回is_anomaly(0/1)+anomaly_score(float)、predict_fault概率和为1、analyze_root_cause返回Top3+conclusion非空、feature_importance长度8、model_metrics准确率>0.9",
+    "TestAPI": "devices/sensor_data/latest_data/analyze(含自定义传感器值)/model_info/stats/dashboard/alert_trend/device_health_detail/alerts列表及设备/状态/级别单维筛选+三维组合筛选",
+    "TestBusinessFlow": "scan扫描生成告警→alerts可查询→handle处理告警状态更新为已处理+maintenance运维记录创建→处理不存在告警返回404→运维记录字段完整",
+    "TestPages": "4个页面路由返回200且包含核心标题文字"
+  },
+  "AI出错与修正案例": [
+    "首次编写页面测试时用b'中文'做bytes包含判断，Python语法不允许非ASCII bytes字面量，报SyntaxError；修正为resp.data.decode('utf-8')后用字符串in判断",
+    "业务闭环测试会修改数据库（处理一条告警），考虑过用事务回滚隔离，但SQLite+Flask test_client下回滚复杂，最终接受测试后数据保留（已处理告警和运维记录反而丰富演示数据，不影响系统功能）"
+  ],
+  "本阶段产出物": [
+    "test_system.py（5大类38个测试用例，标准库unittest，无需额外依赖）",
+    "README.md新增'自动化测试'章节（含运行方式、覆盖范围表、最近测试结果）",
+    "README.md目录结构更新（新增test_system.py、05/06 prompt档案）",
+    "README.md开发计划更新（D7-D8完成，D9集成调试+自动化测试完成）"
+  ],
+  "测试结果": "Ran 38 tests in 1.257s — OK（全部通过）",
+  "运行方式": "python test_system.py  或  python -m unittest test_system -v"
+}
