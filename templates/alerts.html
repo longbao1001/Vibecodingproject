@@ -31,6 +31,12 @@
             <option value="未处理">未处理</option>
             <option value="已处理">已处理</option>
         </select>
+        <label>级别筛选：</label>
+        <select id="severity-filter">
+            <option value="">全部级别</option>
+            <option value="高危">高危</option>
+            <option value="中危">中危</option>
+        </select>
         <button class="btn btn-primary" onclick="loadAlerts()">刷新</button>
         <button class="btn btn-warn" onclick="scanAll()">一键扫描全部设备</button>
     </div>
@@ -96,7 +102,8 @@ async function loadTrend(){
 async function loadAlerts(){
     const device = document.getElementById('device-filter').value;
     const status = document.getElementById('status-filter').value;
-    const res = await api(`/api/alerts?device_id=${device}&status=${status}`);
+    const severity = document.getElementById('severity-filter').value;
+    const res = await api(`/api/alerts?device_id=${device}&status=${status}&severity=${severity}`);
     const rows = res.data;
     document.getElementById('alert-empty').style.display = rows.length?'none':'block';
     document.getElementById('alert-tbody').innerHTML = rows.map(a=>{
@@ -134,6 +141,7 @@ async function scanAll(){
 
 document.getElementById('device-filter').addEventListener('change',loadAlerts);
 document.getElementById('status-filter').addEventListener('change',loadAlerts);
+document.getElementById('severity-filter').addEventListener('change',loadAlerts);
 window.addEventListener('resize',()=>document.querySelectorAll('.chart-sm').forEach(el=>{const i=echarts.getInstanceByDom(el);if(i)i.resize();}));
 (async function init(){await loadDevices();await loadAlerts();})();
 </script>

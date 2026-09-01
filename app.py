@@ -249,9 +249,10 @@ def api_model_info():
 
 @app.route("/api/alerts")
 def api_alerts():
-    """获取告警列表，支持按设备和状态筛选"""
+    """获取告警列表，支持按设备、状态、级别筛选"""
     device_id = request.args.get("device_id", "")
     status = request.args.get("status", "")
+    severity = request.args.get("severity", "")
     sql = "SELECT * FROM alerts WHERE 1=1"
     params = []
     if device_id:
@@ -260,6 +261,9 @@ def api_alerts():
     if status:
         sql += " AND status=?"
         params.append(status)
+    if severity:
+        sql += " AND severity=?"
+        params.append(severity)
     sql += " ORDER BY timestamp DESC LIMIT 500"
     conn = get_conn()
     rows = conn.execute(sql, params).fetchall()
