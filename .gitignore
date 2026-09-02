@@ -10,3 +10,11 @@ _*.txt
 # 系统文件
 Thumbs.db
 .DS_Store
+
+# 运行时日志（一键启动时自动生成，无需提交）
+server.log
+*.log
+
+# Python编译缓存
+*.pyc
+__pycache__/

@@ -1,17 +1,19 @@
-@echo off
-chcp 65001 >nul
-title æ™ºèƒ½æ•…éšœé¢„è­¦ç³»ç»Ÿ - å…³é—­
-cd /d "%~dp0"
-echo ============================================================
-echo   é¢å‘è½¦é—´è®¾å¤‡è¿ç»´çš„æ™ºèƒ½æ•…éšœé¢„è­¦ç³»ç»Ÿ - ä¸€é”®å…³é—­
-echo ============================================================
-echo.
-
-if not exist "E:\anaconda\python.exe" (
-    echo [ERROR] æœªæ‰¾åˆ° Python: E:\anaconda\python.exe
-    echo è¯·æ‰‹åŠ¨å…³é—­å ç”¨5000ç«¯å£çš„è¿›ç¨‹
-    pause
-    exit /b 1
-)
-
-E:\anaconda\python.exe stop_platform.py
+@echo off
+chcp 936 >nul
+cls
+title ÖÇÄÜ¹ÊÕÏÔ¤¾¯ÏµÍ³ - ¹Ø±Õ
+cd /d "%~dp0"
+echo ============================================================
+echo   ÃæÏò³µ¼äÉè±¸ÔËÎ¬µÄÖÇÄÜ¹ÊÕÏÔ¤¾¯ÏµÍ³ - Ò»¼ü¹Ø±Õ
+echo ============================================================
+echo.
+
+if not exist "E:\anaconda\python.exe" (
+    echo [ERROR] Î´ÕÒµ½ Python: E:\anaconda\python.exe
+    echo ÇëÊÖ¶¯¹Ø±ÕÕ¼ÓÃ5000¶Ë¿ÚµÄ½ø³Ì
+    pause
+    exit /b 1
+)
+
+E:\anaconda\python.exe stop_platform.py
+pause
