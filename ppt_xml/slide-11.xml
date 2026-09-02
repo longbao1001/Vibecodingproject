@@ -1,0 +1,118 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>07 · AI USAGE DISCLOSURE</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>AI 使用披露（Vibe-Coding）</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="125" width="200" height="60">
+      <fill><fillColor color="rgba(0,212,255,0.12)"/></fill>
+      <border color="rgba(0,212,255,0.4)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="75" topLeftY="135" width="170" height="20">
+      <content textType="body" fontSize="11" color="rgba(0,212,255,1)" wrap="false"><p>AI 辅助工具</p></content>
+    </shape>
+    <shape type="text" topLeftX="75" topLeftY="155" width="170" height="24">
+      <content textType="body" fontSize="16" color="rgba(255,255,255,1)" bold="true" wrap="false"><p>豆包（doubao）</p></content>
+    </shape>
+    <shape type="rect" topLeftX="280" topLeftY="125" width="240" height="60">
+      <fill><fillColor color="rgba(246,223,172,0.1)"/></fill>
+      <border color="rgba(246,223,172,0.35)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="295" topLeftY="135" width="210" height="20">
+      <content textType="body" fontSize="11" color="rgba(246,223,172,1)" wrap="false"><p>过程档案</p></content>
+    </shape>
+    <shape type="text" topLeftX="295" topLeftY="155" width="210" height="24">
+      <content textType="body" fontSize="14" color="rgba(255,255,255,1)" bold="true" wrap="false"><p>7 份 prompt 档案</p></content>
+    </shape>
+    <shape type="rect" topLeftX="540" topLeftY="125" width="240" height="60">
+      <fill><fillColor color="rgba(0,255,150,0.08)"/></fill>
+      <border color="rgba(0,255,150,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="135" width="210" height="20">
+      <content textType="body" fontSize="11" color="rgba(0,255,150,1)" wrap="false"><p>版本控制</p></content>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="155" width="210" height="24">
+      <content textType="body" fontSize="16" color="rgba(255,255,255,1)" bold="true" wrap="false"><p>完整 Git 提交历史</p></content>
+    </shape>
+    <shape type="rect" topLeftX="800" topLeftY="125" width="130" height="60">
+      <fill><fillColor color="rgba(255,100,100,0.08)"/></fill>
+      <border color="rgba(255,100,100,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="810" topLeftY="135" width="110" height="20">
+      <content textType="body" fontSize="11" color="rgba(255,150,150,1)" wrap="false"><p>人工审查</p></content>
+    </shape>
+    <shape type="text" topLeftX="810" topLeftY="155" width="110" height="24">
+      <content textType="body" fontSize="13" color="rgba(255,255,255,1)" bold="true" wrap="false"><p>100% 审查</p></content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="205" width="400" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>关键提示词策略</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="235" width="420" height="235">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(0,212,255,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="248" width="380" height="210">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.6">
+        <p><span bold="true" color="rgba(0,212,255,1)">① 任务拆解</span>：大任务拆分为可执行子任务，单次下发单一明确需求</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">② 约束说明</span>：明确技术栈、架构约束、业务场景、代码规范</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">③ 验收标准</span>：每次请求明确可验证的验收条件（接口格式/功能闭环）</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">④ 上下文工程</span>：修改前让 AI 先读已有代码，增量修改保证一致性</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">⑤ 规格驱动</span>：先需求规格→AI 制定计划→分步实现→逐步验收</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">⑥ 人工接管</span>：AI 无法修复时回滚/缩小改动/最小复现辅助定位</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="510" topLeftY="205" width="400" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>AI 出错案例及人工纠正</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="235" width="390" height="235">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="248" width="350" height="210">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.6">
+        <p><span bold="true" color="rgba(255,150,150,1)">① 列名不一致</span>：AI 生成算法用空格原名，DB 用下划线→人工新增映射函数</p>
+        <p><span bold="true" color="rgba(255,150,150,1)">② 阈值不合理</span>：AI 设 90/70 导致全红→人工调整为 85/60，得到合理分布</p>
+        <p><span bold="true" color="rgba(255,150,150,1)">③ 全局 nowrap 溢出</span>：AI 统一 nowrap 导致长文本溢出→人工新增 td-wrap 类</p>
+        <p><span bold="true" color="rgba(255,150,150,1)">④ bytes 语法错误</span>：AI 用 b"中文"→人工改为 decode 后字符串判断</p>
+        <p><span bold="true" color="rgba(255,150,150,1)">⑤ ECharts 重复 init</span>：AI 每次 init 同一 DOM→人工封装 renderGauge 复用实例</p>
+        <p><span bold="true" color="rgba(0,255,150,1)">原则：AI 生成代码必须经人工审查逻辑/安全/业务适配性，测试验证后才提交</span></p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>11 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>本项目全程采用Vibe-Coding模式开发，使用豆包作为AI辅助工具。关键提示词策略包括任务拆解、约束说明、验收标准、上下文工程、规格驱动和人工接管。开发过程中AI生成代码出现了5个典型错误，包括数据库列名不一致、健康度阈值不合理、全局nowrap导致溢出、bytes语法错误和ECharts重复初始化，均经人工审查后修复。所有AI生成代码必须经人工审查逻辑、安全性和业务适配性，通过自动化测试验证后才提交到GitHub。项目保留了7份按阶段编号的prompt档案和完整的Git提交历史，满足课程设计过程考核要求。</p>
+    </content>
+  </note>
+</slide>

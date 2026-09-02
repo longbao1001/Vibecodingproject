@@ -1,0 +1,151 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="260" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>01 · RESEARCH BACKGROUND</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="500" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>研究背景与意义</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="130" width="400" height="24">
+      <content textType="body" fontSize="14" color="rgba(180,200,230,1)" bold="true" wrap="false">
+        <p>传统设备运维模式的三大痛点</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="165" width="400" height="90">
+      <fill><fillColor color="rgba(0,212,255,0.06)"/></fill>
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="175" width="40" height="30">
+      <content textType="body" fontSize="22" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>01</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="125" topLeftY="178" width="320" height="24">
+      <content textType="body" fontSize="15" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>故障发现滞后</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="125" topLeftY="205" width="320" height="40">
+      <content textType="body" fontSize="11" color="rgba(160,180,210,1)" lineSpacing="multiple:1.4">
+        <p>依赖定期巡检和事后维修，故障发生后才响应，导致生产线非计划停机，造成显著经济损失。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="270" width="400" height="90">
+      <fill><fillColor color="rgba(0,212,255,0.06)"/></fill>
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="280" width="40" height="30">
+      <content textType="body" fontSize="22" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>02</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="125" topLeftY="283" width="320" height="24">
+      <content textType="body" fontSize="15" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>运维成本偏高</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="125" topLeftY="310" width="320" height="40">
+      <content textType="body" fontSize="11" color="rgba(160,180,210,1)" lineSpacing="multiple:1.4">
+        <p>缺乏数据驱动的决策支持，存在过度维护浪费资源或维护不足导致故障的两难问题。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="375" width="400" height="90">
+      <fill><fillColor color="rgba(0,212,255,0.06)"/></fill>
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="385" width="40" height="30">
+      <content textType="body" fontSize="22" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>03</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="125" topLeftY="388" width="320" height="24">
+      <content textType="body" fontSize="15" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>根因定位困难</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="125" topLeftY="415" width="320" height="40">
+      <content textType="body" fontSize="11" color="rgba(160,180,210,1)" lineSpacing="multiple:1.4">
+        <p>故障发生后无法快速定位诱因，依赖运维人员经验判断，检修时间长、效率低。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="500" topLeftY="130" width="400" height="335">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="520" topLeftY="150" width="360" height="28">
+      <content textType="body" fontSize="16" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>研究意义：数据驱动的预测性维护</p>
+      </content>
+    </shape>
+    <line startX="520" startY="185" endX="880" endY="185">
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="520" topLeftY="205" width="360" height="60">
+      <content textType="body" fontSize="13" color="rgba(220,230,245,1)" lineSpacing="multiple:1.6">
+        <p>基于设备多传感器时序数据，运用机器学习算法实现异常检测、故障预测与根因分析，在故障发生前提前预警。</p>
+      </content>
+    </shape>
+    <shape type="ellipse" topLeftX="525" topLeftY="285" width="10" height="10">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="545" topLeftY="280" width="340" height="24">
+      <content textType="body" fontSize="13" color="rgba(255,255,255,1)" wrap="false">
+        <p>减少非计划停机时间</p>
+      </content>
+    </shape>
+    <shape type="ellipse" topLeftX="525" topLeftY="325" width="10" height="10">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="545" topLeftY="320" width="340" height="24">
+      <content textType="body" fontSize="13" color="rgba(255,255,255,1)" wrap="false">
+        <p>降低设备运维综合成本</p>
+      </content>
+    </shape>
+    <shape type="ellipse" topLeftX="525" topLeftY="365" width="10" height="10">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="545" topLeftY="360" width="340" height="24">
+      <content textType="body" fontSize="13" color="rgba(255,255,255,1)" wrap="false">
+        <p>提升设备综合效率（OEE）</p>
+      </content>
+    </shape>
+    <shape type="ellipse" topLeftX="525" topLeftY="405" width="10" height="10">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="545" topLeftY="400" width="340" height="24">
+      <content textType="body" fontSize="13" color="rgba(255,255,255,1)" wrap="false">
+        <p>辅助运维人员快速定位根因</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="490" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="490" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>03 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>传统设备运维主要依赖定期巡检和事后维修，存在三大痛点：故障发现滞后导致非计划停机、运维成本偏高、根因定位困难。本研究的意义在于通过数据驱动的预测性维护，在故障发生前提前预警，辅助运维人员快速定位根因，从而减少停机时间、降低运维成本、提升设备综合效率。</p>
+    </content>
+  </note>
+</slide>

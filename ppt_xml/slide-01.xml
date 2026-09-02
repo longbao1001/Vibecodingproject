@@ -1,0 +1,66 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(18,32,70,1) 50%,rgba(12,24,55,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="4">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="120" width="4" height="200">
+      <fill><fillColor color="rgba(246,223,172,0.6)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="100" topLeftY="130" width="700" height="40">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>MANUFACTURING INTELLIGENCE · COURSE DESIGN DEFENSE</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="100" topLeftY="185" width="780" height="120">
+      <content textType="title" fontSize="44" color="rgba(255,255,255,1)" bold="true" lineSpacing="multiple:1.2">
+        <p>面向车间设备运维的</p>
+        <p>智能故障预警系统</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="100" topLeftY="320" width="120" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="100" topLeftY="335" width="600" height="30">
+      <content textType="body" fontSize="18" color="rgba(180,200,230,1)" wrap="false">
+        <p>基于孤立森林 · 随机森林 · 特征重要度的 B/S 架构智能运维平台</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="0" topLeftY="460" width="960" height="1">
+      <fill><fillColor color="rgba(0,212,255,0.3)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="100" topLeftY="475" width="300" height="50">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" lineSpacing="multiple:1.6">
+        <p>北华大学 · 机械工程学院</p>
+        <p>智能制造工程专业</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="430" topLeftY="475" width="250" height="50">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" lineSpacing="multiple:1.6">
+        <p>学生姓名：_______________</p>
+        <p>学　　号：_______________</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="700" topLeftY="475" width="200" height="50">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" lineSpacing="multiple:1.6">
+        <p>指导教师：_______________</p>
+        <p>2026 年 9 月</p>
+      </content>
+    </shape>
+    <shape type="ellipse" topLeftX="860" topLeftY="40" width="80" height="80" alpha="0.08">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="ellipse" topLeftX="895" topLeftY="70" width="45" height="45" alpha="0.06">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>各位老师好，我是智能制造工程专业的学生。本次课程设计的题目是"面向车间设备运维的智能故障预警系统"。系统基于SKAB工业水泵数据集，运用孤立森林、随机森林和特征重要度三项课程技术，构建了B/S架构的智能运维平台。下面我将从研究背景、系统设计、核心技术、测试验证等方面进行汇报。</p>
+    </content>
+  </note>
+</slide>

@@ -1,0 +1,61 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="0" topLeftY="537" width="960" height="3">
+      <fill><fillColor color="rgba(246,223,172,0.6)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="380" topLeftY="155" width="200" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="180" topLeftY="175" width="600" height="80">
+      <content textType="title" fontSize="56" color="rgba(255,255,255,1)" bold="true" textAlign="center" letterSpacing="4" wrap="false">
+        <p>感谢聆听</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="180" topLeftY="265" width="600" height="40">
+      <content textType="body" fontSize="20" color="rgba(0,212,255,1)" textAlign="center" letterSpacing="6" wrap="false">
+        <p>敬请批评指正</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="380" topLeftY="320" width="200" height="2">
+      <fill><fillColor color="rgba(246,223,172,0.5)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="180" topLeftY="340" width="600" height="30">
+      <content textType="body" fontSize="14" color="rgba(200,220,240,1)" textAlign="center" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="180" topLeftY="375" width="600" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" textAlign="center" wrap="false">
+        <p>北华大学 · 机械工程学院 · 智能制造工程</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="130" topLeftY="405" width="700" height="24">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="center" wrap="false">
+        <p>学生：_______________　学号：_______________　指导教师：_______________</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>13 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>本课程设计完成了面向车间设备运维的智能故障预警系统，采用B/S架构，包含孤立森林异常检测、随机森林故障预测和特征重要度根因分析三大算法模块，实现了从数据采集、预处理、模型训练到系统开发、测试和部署的完整流程。全程采用Vibe-Coding模式开发，使用豆包作为AI辅助工具，保留了完整的过程档案和Git提交历史。感谢指导教师的悉心指导，敬请各位老师批评指正。</p>
+    </content>
+  </note>
+</slide>

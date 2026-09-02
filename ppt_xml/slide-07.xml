@@ -1,0 +1,137 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>04 · CORE TECHNOLOGY 2 / 3</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>核心技术二：设备故障预测</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="125" width="200" height="32">
+      <fill><fillColor color="rgba(246,223,172,0.15)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="70" topLeftY="130" width="180" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" textAlign="center" wrap="false">
+        <p>随机森林 RandomForest</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="175" width="420" height="145">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(0,212,255,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="187" width="380" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>算法原理</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="217" width="380" height="95">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.6">
+        <p>通过 Bootstrap 自助采样生成多个训练子集，每个子集训练一棵决策树，最终通过投票综合所有决策树的预测结果。</p>
+        <p>通过"树的多样性"降低单棵决策树的过拟合风险，具有较高分类精度、良好抗噪声能力和特征重要度评估能力。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="335" width="420" height="140">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(246,223,172,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="347" width="380" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>实现细节</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="377" width="380" height="90">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.7">
+        <p>输入特征：8 路传感器值　监督信号：anomaly 标签</p>
+        <p>数据划分：8:2 训练集 / 测试集（37335 / 9334 条）</p>
+        <p>模型参数：n_estimators=200，random_state=42</p>
+        <p>输出：fault_label + fault_prob + normal_prob（和为 1）</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="125" width="390" height="120">
+      <fill><fillColor color="rgba(0,212,255,0.08)"/></fill>
+      <border color="rgba(0,212,255,0.4)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="137" width="250" height="24">
+      <content textType="body" fontSize="13" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>测试集准确率</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="165" width="280" height="70">
+      <content textType="title" fontSize="56" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>93.04%</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="170" width="130" height="60">
+      <content textType="body" fontSize="11" color="rgba(160,180,210,1)" lineSpacing="multiple:1.6">
+        <p>测试集 9334 条</p>
+        <p>二分类故障预测</p>
+        <p>正常 / 异常</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="260" width="390" height="215">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="272" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>混淆矩阵（测试集）</p>
+      </content>
+    </shape>
+    <table topLeftX="540" topLeftY="305" width="330" height="140">
+      <colgroup>
+        <col width="110"/>
+        <col width="110"/>
+        <col width="110"/>
+      </colgroup>
+      <tr height="35">
+        <td><fill><fillColor color="rgba(255,255,255,0.05)"/></fill><content textType="body" fontSize="11" color="rgba(180,200,230,1)" textAlign="center"><p>真实\预测</p></content></td>
+        <td><fill><fillColor color="rgba(0,255,150,0.15)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(0,255,150,1)" textAlign="center"><p>预测正常</p></content></td>
+        <td><fill><fillColor color="rgba(255,80,80,0.15)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,100,100,1)" textAlign="center"><p>预测异常</p></content></td>
+      </tr>
+      <tr height="45">
+        <td><fill><fillColor color="rgba(0,255,150,0.1)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(0,255,150,1)" textAlign="center"><p>真实正常</p></content></td>
+        <td><content textType="body" fontSize="16" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>6594</p></content></td>
+        <td><content textType="body" fontSize="14" color="rgba(255,180,80,1)" textAlign="center"><p>92</p></content></td>
+      </tr>
+      <tr height="45">
+        <td><fill><fillColor color="rgba(255,80,80,0.1)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,100,100,1)" textAlign="center"><p>真实异常</p></content></td>
+        <td><content textType="body" fontSize="14" color="rgba(255,180,80,1)" textAlign="center"><p>558</p></content></td>
+        <td><content textType="body" fontSize="16" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>2090</p></content></td>
+      </tr>
+    </table>
+    <shape type="text" topLeftX="540" topLeftY="452" width="330" height="20">
+      <content textType="body" fontSize="10" color="rgba(140,160,190,1)" textAlign="center" wrap="false">
+        <p>精确率 95.8% · 召回率 78.9% · F1 分数 86.5%</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>07 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>核心技术二是基于随机森林的设备故障预测。随机森林通过Bootstrap自助采样生成多个训练子集，每个子集训练一棵决策树，最终通过投票综合所有树的预测结果，降低过拟合风险。本系统以8路传感器值为输入特征，anomaly标签为监督信号，按8:2划分训练集和测试集，n_estimators=200。模型在测试集上准确率达93.04%，混淆矩阵显示真正例6594、假正例92、假负例558、真负例2090，精确率95.8%，召回率78.9%，F1分数86.5%。</p>
+    </content>
+  </note>
+</slide>

@@ -1,0 +1,156 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="260" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>02 · SYSTEM ARCHITECTURE</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="500" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>系统总体架构</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="125" width="500" height="24">
+      <content textType="body" fontSize="13" color="rgba(160,180,210,1)" wrap="false">
+        <p>B/S 四层架构 · 表现层 / 业务逻辑层 / 算法层 / 数据层</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="80" topLeftY="165" width="680" height="65">
+      <fill><fillColor color="rgba(0,212,255,0.1)"/></fill>
+      <border color="rgba(0,212,255,0.5)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="95" topLeftY="175" width="100" height="45">
+      <content textType="body" fontSize="13" color="rgba(0,212,255,1)" bold="true" textAlign="center" lineSpacing="multiple:1.3">
+        <p>表现层</p>
+        <p>前端</p>
+      </content>
+    </shape>
+    <line startX="200" startY="180" endX="200" endY="215">
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="215" topLeftY="180" width="530" height="40">
+      <content textType="body" fontSize="12" color="rgba(220,230,245,1)" lineSpacing="multiple:1.5">
+        <p>设备运维驾驶舱 · 传感器实时监控 · 故障告警管理 · 运维处置记录</p>
+        <p>HTML / CSS / JavaScript + ECharts 可视化 · 深色工业科技风</p>
+      </content>
+    </shape>
+    <line startX="420" startY="230" endX="420" endY="248">
+      <border color="rgba(0,212,255,0.4)" width="2"/>
+      <endArrow type="arrow"/>
+    </line>
+    <shape type="rect" topLeftX="80" topLeftY="250" width="680" height="65">
+      <fill><fillColor color="rgba(246,223,172,0.08)"/></fill>
+      <border color="rgba(246,223,172,0.4)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="95" topLeftY="260" width="100" height="45">
+      <content textType="body" fontSize="13" color="rgba(246,223,172,1)" bold="true" textAlign="center" lineSpacing="multiple:1.3">
+        <p>业务逻辑层</p>
+        <p>后端</p>
+      </content>
+    </shape>
+    <line startX="200" startY="265" endX="200" endY="300">
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="215" topLeftY="265" width="530" height="40">
+      <content textType="body" fontSize="12" color="rgba(220,230,245,1)" lineSpacing="multiple:1.5">
+        <p>Flask 框架 · 13 个 RESTful API · 4 个页面路由 · 业务流程编排</p>
+        <p>扫描→告警→处置→运维记录完整闭环 · 综合预警级别判定</p>
+      </content>
+    </shape>
+    <line startX="420" startY="315" endX="420" endY="333">
+      <border color="rgba(246,223,172,0.4)" width="2"/>
+      <endArrow type="arrow"/>
+    </line>
+    <shape type="rect" topLeftX="80" topLeftY="335" width="680" height="65">
+      <fill><fillColor color="rgba(0,212,255,0.08)"/></fill>
+      <border color="rgba(0,212,255,0.4)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="95" topLeftY="345" width="100" height="45">
+      <content textType="body" fontSize="13" color="rgba(0,212,255,1)" bold="true" textAlign="center" lineSpacing="multiple:1.3">
+        <p>算法层</p>
+        <p>AI 模型</p>
+      </content>
+    </shape>
+    <line startX="200" startY="350" endX="200" endY="385">
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="215" topLeftY="350" width="530" height="40">
+      <content textType="body" fontSize="12" color="rgba(220,230,245,1)" lineSpacing="multiple:1.5">
+        <p>孤立森林（时序异常检测）· 随机森林（故障预测，准确率 93.04%）</p>
+        <p>特征重要度（根因分析 Top3 + 运维建议）· 模型 pkl 持久化</p>
+      </content>
+    </shape>
+    <line startX="420" startY="400" endX="420" endY="418">
+      <border color="rgba(0,212,255,0.4)" width="2"/>
+      <endArrow type="arrow"/>
+    </line>
+    <shape type="rect" topLeftX="80" topLeftY="420" width="680" height="55">
+      <fill><fillColor color="rgba(246,223,172,0.06)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="95" topLeftY="428" width="100" height="40">
+      <content textType="body" fontSize="13" color="rgba(246,223,172,1)" bold="true" textAlign="center" lineSpacing="multiple:1.3">
+        <p>数据层</p>
+        <p>SQLite</p>
+      </content>
+    </shape>
+    <line startX="200" startY="432" endX="200" endY="465">
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="215" topLeftY="432" width="530" height="35">
+      <content textType="body" fontSize="12" color="rgba(220,230,245,1)" lineSpacing="multiple:1.5">
+        <p>4 张核心表：devices（设备）· sensor_data（46669 条传感器时序）· alerts（告警）· maintenance（运维记录）</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="790" topLeftY="165" width="120" height="310">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(255,255,255,0.1)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="800" topLeftY="180" width="100" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" bold="true" textAlign="center" wrap="false">
+        <p>技术栈</p>
+      </content>
+    </shape>
+    <line startX="810" startY="210" endX="890" endY="210">
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="800" topLeftY="225" width="100" height="240">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" textAlign="center" lineSpacing="multiple:2">
+        <p>Python 3.9</p>
+        <p>Flask 3.x</p>
+        <p>scikit-learn</p>
+        <p>pandas / numpy</p>
+        <p>SQLite 3</p>
+        <p>ECharts 5</p>
+        <p>HTML / CSS / JS</p>
+        <p>unittest</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>04 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>系统采用B/S四层架构。最上层是表现层，包含四个前端页面，使用HTML/CSS/JavaScript和ECharts实现深色工业科技风界面。第二层是业务逻辑层，基于Flask框架提供13个RESTful API，负责业务流程编排，实现扫描到告警到处置到运维记录的完整闭环。第三层是算法层，包含孤立森林异常检测、随机森林故障预测（准确率93.04%）和特征重要度根因分析三大模型。最底层是数据层，使用SQLite存储4张核心表，共46669条传感器时序数据。</p>
+    </content>
+  </note>
+</slide>

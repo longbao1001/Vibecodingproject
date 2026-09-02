@@ -1,0 +1,155 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>06 · TESTING &amp; VERIFICATION</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>系统测试与验证</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="125" width="280" height="110">
+      <fill><fillColor color="rgba(0,212,255,0.1)"/></fill>
+      <border color="rgba(0,212,255,0.4)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="137" width="240" height="22">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>自动化测试用例</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="162" width="240" height="60">
+      <content textType="title" fontSize="48" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>38</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="170" topLeftY="180" width="150" height="40">
+      <content textType="body" fontSize="11" color="rgba(160,180,210,1)" lineSpacing="multiple:1.5">
+        <p>个用例全部通过</p>
+        <p>耗时 1.257 秒</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="360" topLeftY="125" width="280" height="110">
+      <fill><fillColor color="rgba(246,223,172,0.08)"/></fill>
+      <border color="rgba(246,223,172,0.35)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="380" topLeftY="137" width="240" height="22">
+      <content textType="body" fontSize="12" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>测试框架</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="380" topLeftY="165" width="240" height="60">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.7">
+        <p>Python 标准库 unittest</p>
+        <p>Flask test_client（无需启动服务器）</p>
+        <p>5 个测试类，覆盖全链路</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="660" topLeftY="125" width="240" height="110">
+      <fill><fillColor color="rgba(0,255,150,0.08)"/></fill>
+      <border color="rgba(0,255,150,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="680" topLeftY="137" width="200" height="22">
+      <content textType="body" fontSize="12" color="rgba(0,255,150,1)" bold="true" wrap="false">
+        <p>测试结果</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="680" topLeftY="165" width="200" height="60">
+      <content textType="body" fontSize="12" color="rgba(180,255,210,1)" lineSpacing="multiple:1.7">
+        <p>Ran 38 tests in 1.257s</p>
+        <p>OK — 全部通过</p>
+        <p>0 失败，0 错误</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="255" width="300" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>测试用例分布</p>
+      </content>
+    </shape>
+    <table topLeftX="60" topLeftY="285" width="420" height="185">
+      <colgroup>
+        <col width="160"/>
+        <col width="60"/>
+        <col width="200"/>
+      </colgroup>
+      <tr height="32">
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>测试类</p></content></td>
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>用例数</p></content></td>
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>覆盖内容</p></content></td>
+      </tr>
+      <tr height="28">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)"><p>TestDatabase</p></content></td>
+        <td><content textType="body" fontSize="12" bold="true" color="rgba(0,212,255,1)" textAlign="center"><p>7</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(180,200,230,1)"><p>4 表存在性/设备映射/数据量</p></content></td>
+      </tr>
+      <tr height="28">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)"><p>TestAlgorithms</p></content></td>
+        <td><content textType="body" fontSize="12" bold="true" color="rgba(0,212,255,1)" textAlign="center"><p>8</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(180,200,230,1)"><p>三模型加载/返回结构/准确率</p></content></td>
+      </tr>
+      <tr height="28">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)"><p>TestAPI</p></content></td>
+        <td><content textType="body" fontSize="12" bold="true" color="rgba(0,212,255,1)" textAlign="center"><p>17</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(180,200,230,1)"><p>13 接口/三维筛选/组合筛选</p></content></td>
+      </tr>
+      <tr height="28">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)"><p>TestBusinessFlow</p></content></td>
+        <td><content textType="body" fontSize="12" bold="true" color="rgba(0,212,255,1)" textAlign="center"><p>5</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(180,200,230,1)"><p>扫描→告警→处置→记录闭环</p></content></td>
+      </tr>
+      <tr height="28">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)"><p>TestPages</p></content></td>
+        <td><content textType="body" fontSize="12" bold="true" color="rgba(0,212,255,1)" textAlign="center"><p>4</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(180,200,230,1)"><p>4 页面路由 200 且含标题</p></content></td>
+      </tr>
+    </table>
+    <shape type="rect" topLeftX="510" topLeftY="255" width="390" height="215">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="267" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>集成调试修复的真实 Bug</p>
+      </content>
+    </shape>
+    <line startX="530" startY="298" endX="880" endY="298">
+      <border color="rgba(246,223,172,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="530" topLeftY="308" width="350" height="155">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.8">
+        <p>① 数据库列名不一致（空格 vs 下划线）→ 新增映射函数修复</p>
+        <p>② 监控页仪表盘初始空白 → 页面加载自动执行诊断</p>
+        <p>③ 表格按钮换行与字体重叠 → 布局比例调整 + td-wrap 类</p>
+        <p>④ 测试脚本 bytes 语法错误 → 改为 decode 后字符串判断</p>
+        <p>⑤ ECharts 重复初始化警告 → 封装 renderGauge 复用实例</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>10 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>系统测试使用Python标准库unittest和Flask test_client，无需启动服务器。共编写38个自动化测试用例，分为5个测试类：TestDatabase(7个)验证4张表和数据量，TestAlgorithms(8个)验证三大算法模型，TestAPI(17个)验证13个接口和三维筛选，TestBusinessFlow(5个)验证扫描到告警到处置到记录的完整闭环，TestPages(4个)验证4个页面路由。全部38个用例在1.257秒内通过，0失败0错误。集成调试过程中发现并修复了5个真实bug，包括数据库列名不一致、仪表盘初始空白、表格字体重叠等问题。</p>
+    </content>
+  </note>
+</slide>

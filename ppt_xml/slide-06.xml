@@ -1,0 +1,152 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>04 · CORE TECHNOLOGY 1 / 3</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>核心技术一：时序异常检测</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="125" width="200" height="32">
+      <fill><fillColor color="rgba(0,212,255,0.15)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="70" topLeftY="130" width="180" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" textAlign="center" wrap="false">
+        <p>孤立森林 IsolationForest</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="175" width="420" height="150">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(0,212,255,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="187" width="380" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>算法原理</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="217" width="380" height="100">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.6">
+        <p>通过随机划分特征空间构建多棵孤立树（iTree），异常点由于数量少且特征值偏离正常分布，在随机划分中更容易被隔离——从根节点到叶节点的路径长度更短。</p>
+        <p>计算每个样本的平均路径长度，转化为异常分数（Anomaly Score），越接近 1 越可能是异常。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="335" width="420" height="140">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(246,223,172,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="347" width="380" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>实现细节</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="377" width="380" height="95">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.7">
+        <p>训练数据：仅使用 anomaly=0 的正常工况样本（9401 条）</p>
+        <p>模型参数：n_estimators=100，contamination=0.05</p>
+        <p>输入特征：8 路传感器值（振动×2、电流、压力、温度等）</p>
+        <p>输出：is_anomaly（0=正常，1=异常）+ anomaly_score</p>
+        <p>模型持久化：anomaly_iforest.pkl（约 1.2MB）</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="125" width="390" height="100">
+      <fill><fillColor color="rgba(0,212,255,0.08)"/></fill>
+      <border color="rgba(0,212,255,0.4)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="137" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>在系统中的作用</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="167" width="350" height="50">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.6">
+        <p>单条数据智能诊断的第一环，批量扫描的异常识别引擎。与故障概率联合判定综合预警级别。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="240" width="390" height="235">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="252" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>综合预警级别判定逻辑</p>
+      </content>
+    </shape>
+    <line startX="530" startY="285" endX="880" endY="285">
+      <border color="rgba(246,223,172,0.2)" width="1"/>
+    </line>
+    <shape type="ellipse" topLeftX="535" topLeftY="300" width="12" height="12">
+      <fill><fillColor color="rgba(255,80,80,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="296" width="330" height="22">
+      <content textType="body" fontSize="12" color="rgba(255,180,180,1)" wrap="false">
+        <p><span bold="true" color="rgba(255,100,100,1)">高危</span>　fault_prob ≥ 0.7 或 is_anomaly = 1</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="318" width="330" height="20">
+      <content textType="body" fontSize="10" color="rgba(200,160,160,1)" wrap="false">
+        <p>自动生成告警，需立即处置</p>
+      </content>
+    </shape>
+    <line startX="530" startY="348" endX="880" endY="348">
+      <border color="rgba(255,255,255,0.08)" width="1"/>
+    </line>
+    <shape type="ellipse" topLeftX="535" topLeftY="362" width="12" height="12">
+      <fill><fillColor color="rgba(255,200,80,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="358" width="330" height="22">
+      <content textType="body" fontSize="12" color="rgba(255,220,150,1)" wrap="false">
+        <p><span bold="true" color="rgba(255,200,80,1)">中危</span>　0.4 ≤ fault_prob &lt; 0.7</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="380" width="330" height="20">
+      <content textType="body" fontSize="10" color="rgba(200,190,150,1)" wrap="false">
+        <p>生成关注告警，建议尽快检查</p>
+      </content>
+    </shape>
+    <line startX="530" startY="410" endX="880" endY="410">
+      <border color="rgba(255,255,255,0.08)" width="1"/>
+    </line>
+    <shape type="ellipse" topLeftX="535" topLeftY="424" width="12" height="12">
+      <fill><fillColor color="rgba(0,255,150,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="420" width="330" height="22">
+      <content textType="body" fontSize="12" color="rgba(150,255,200,1)" wrap="false">
+        <p><span bold="true" color="rgba(0,255,150,1)">正常</span>　fault_prob &lt; 0.4 且 is_anomaly = 0</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="555" topLeftY="442" width="330" height="20">
+      <content textType="body" fontSize="10" color="rgba(150,200,170,1)" wrap="false">
+        <p>设备运行正常，持续监测</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>06 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>核心技术一是基于孤立森林的时序异常检测。孤立森林通过随机划分特征空间构建多棵孤立树，异常点由于数量少且特征值偏离正常分布，路径长度更短，异常分数更接近1。本系统仅使用正常工况样本训练模型，n_estimators=100，contamination=0.05，输入8路传感器值，输出是否异常和异常分数。异常检测与故障概率联合判定综合预警级别：故障概率≥0.7或检测为异常判定为高危，0.4到0.7为中危，否则为正常。</p>
+    </content>
+  </note>
+</slide>

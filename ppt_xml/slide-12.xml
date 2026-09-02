@@ -1,0 +1,135 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>08 · SUMMARY &amp; OUTLOOK</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>总结与展望</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="125" width="400" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>项目成果</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="155" width="200" height="100">
+      <fill><fillColor color="rgba(0,212,255,0.1)"/></fill>
+      <border color="rgba(0,212,255,0.35)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="75" topLeftY="165" width="170" height="40">
+      <content textType="title" fontSize="32" color="rgba(0,212,255,1)" bold="true" wrap="false"><p>4+13+3</p></content>
+    </shape>
+    <shape type="text" topLeftX="75" topLeftY="208" width="180" height="40">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.5">
+        <p>4 页面 / 13 API</p>
+        <p>3 大算法模块</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="280" topLeftY="155" width="200" height="100">
+      <fill><fillColor color="rgba(246,223,172,0.1)"/></fill>
+      <border color="rgba(246,223,172,0.35)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="295" topLeftY="165" width="170" height="40">
+      <content textType="title" fontSize="32" color="rgba(246,223,172,1)" bold="true" wrap="false"><p>93.04%</p></content>
+    </shape>
+    <shape type="text" topLeftX="295" topLeftY="208" width="180" height="40">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.5">
+        <p>故障预测测试集</p>
+        <p>准确率</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="270" width="200" height="100">
+      <fill><fillColor color="rgba(0,255,150,0.08)"/></fill>
+      <border color="rgba(0,255,150,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="75" topLeftY="280" width="170" height="40">
+      <content textType="title" fontSize="32" color="rgba(0,255,150,1)" bold="true" wrap="false"><p>38 / 38</p></content>
+    </shape>
+    <shape type="text" topLeftX="75" topLeftY="323" width="180" height="40">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.5">
+        <p>自动化测试用例</p>
+        <p>全部通过</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="280" topLeftY="270" width="200" height="100">
+      <fill><fillColor color="rgba(255,150,100,0.08)"/></fill>
+      <border color="rgba(255,150,100,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="295" topLeftY="280" width="170" height="40">
+      <content textType="title" fontSize="32" color="rgba(255,180,120,1)" bold="true" wrap="false"><p>7 份</p></content>
+    </shape>
+    <shape type="text" topLeftX="295" topLeftY="323" width="180" height="40">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.5">
+        <p>Vibe-Coding 过程</p>
+        <p>prompt 档案</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="125" width="390" height="165">
+      <fill><fillColor color="rgba(0,212,255,0.05)"/></fill>
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="137" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>创新点</p>
+      </content>
+    </shape>
+    <line startX="530" startY="168" endX="880" endY="168">
+      <border color="rgba(0,212,255,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="530" topLeftY="178" width="350" height="105">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.6">
+        <p><span bold="true" color="rgba(0,212,255,1)">① 三算法串联诊断</span>：孤立森林异常检测→随机森林故障预测→特征重要度根因分析，形成完整智能诊断链</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">② 综合预警级别</span>：融合异常分数与故障概率，高危/中危/正常三级判定，避免单一指标误报</p>
+        <p><span bold="true" color="rgba(0,212,255,1)">③ 运维闭环</span>：告警扫描→告警处置→运维记录自动创建，状态同步，形成可追溯闭环</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="305" width="390" height="165">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="317" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>不足与未来展望</p>
+      </content>
+    </shape>
+    <line startX="530" startY="348" endX="880" endY="348">
+      <border color="rgba(246,223,172,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="530" topLeftY="358" width="350" height="105">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.6">
+        <p><span bold="true" color="rgba(246,223,172,1)">① 数据规模</span>：当前使用公开 SKAB 数据集，未来可接入真实工业现场数据，提升模型泛化能力</p>
+        <p><span bold="true" color="rgba(246,223,172,1)">② 模型可解释性</span>：可引入 SHAP/LIME 等方法，提升根因分析的可解释性和可信度</p>
+        <p><span bold="true" color="rgba(246,223,172,1)">③ 实时流式处理</span>：当前为批量分析，未来可扩展 Kafka/Flink 实时流式处理，支持多设备联动分析</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>12 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>本项目完成了面向车间设备运维的智能故障预警系统，包含4个页面、13个API接口和3大算法模块，故障预测测试集准确率达到93.04%，38个自动化测试用例全部通过，保留了7份Vibe-Coding过程档案。项目有三个创新点：一是三算法串联形成完整智能诊断链，二是融合异常分数与故障概率的综合预警级别判定，三是告警到处置到运维记录的完整闭环。不足之处在于数据集规模有限、模型可解释性可进一步提升、当前为批量分析。未来可接入真实工业数据、引入SHAP可解释性方法、扩展实时流式处理能力。</p>
+    </content>
+  </note>
+</slide>

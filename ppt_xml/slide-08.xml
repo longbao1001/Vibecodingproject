@@ -1,0 +1,138 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>04 · CORE TECHNOLOGY 3 / 3</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>核心技术三：故障根因分析</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="125" width="240" height="32">
+      <fill><fillColor color="rgba(0,212,255,0.15)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="70" topLeftY="130" width="220" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" textAlign="center" wrap="false">
+        <p>特征重要度 Feature Importance</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="175" width="420" height="145">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(0,212,255,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="187" width="380" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>算法原理</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="217" width="380" height="95">
+      <content textType="body" fontSize="12" color="rgba(200,220,240,1)" lineSpacing="multiple:1.6">
+        <p>从训练好的随机森林模型中提取 feature_importances_，通过评估每个特征在所有决策树分裂中带来的不纯度减少量，计算各传感器对故障预测的贡献程度。</p>
+        <p>贡献度越高的传感器，对故障判定影响越大，可作为故障根因定位依据，结合物理含义生成针对性运维建议。</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="335" width="420" height="140">
+      <fill><fillColor color="rgba(255,255,255,0.03)"/></fill>
+      <border color="rgba(246,223,172,0.25)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="347" width="380" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>根因→运维建议映射</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="377" width="380" height="90">
+      <content textType="body" fontSize="11" color="rgba(200,220,240,1)" lineSpacing="multiple:1.8">
+        <p>振动异常（Accelerometer）→ 检查轴承磨损、叶轮动平衡</p>
+        <p>电流异常（Current）→ 检查电机负载、绕组绝缘状态</p>
+        <p>流量异常（Volume Flow Rate）→ 检查管路阀门、叶轮堵塞</p>
+        <p>温度异常（Temperature）→ 检查冷却系统、润滑状态</p>
+        <p>压力异常（Pressure）→ 检查管路泄漏、泵腔密封</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="510" topLeftY="125" width="390" height="350">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="137" width="350" height="24">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>8 路传感器特征重要度排序</p>
+      </content>
+    </shape>
+    <line startX="530" startY="170" endX="880" endY="170">
+      <border color="rgba(246,223,172,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="530" topLeftY="180" width="30" height="24">
+      <content textType="body" fontSize="14" bold="true" color="rgba(255,100,100,1)" textAlign="center" wrap="false"><p>1</p></content>
+    </shape>
+    <shape type="text" topLeftX="565" topLeftY="180" width="200" height="24">
+      <content textType="body" fontSize="12" color="rgba(255,255,255,1)" wrap="false"><p>振动加速度 1</p></content>
+    </shape>
+    <shape type="rect" topLeftX="530" topLeftY="206" width="340" height="6">
+      <fill><fillColor color="rgba(255,255,255,0.1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="530" topLeftY="206" width="310" height="6">
+      <fill><fillColor color="rgba(255,100,100,0.8)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="222" width="30" height="24">
+      <content textType="body" fontSize="14" bold="true" color="rgba(255,180,80,1)" textAlign="center" wrap="false"><p>2</p></content>
+    </shape>
+    <shape type="text" topLeftX="565" topLeftY="222" width="200" height="24">
+      <content textType="body" fontSize="12" color="rgba(255,255,255,1)" wrap="false"><p>振动加速度 2</p></content>
+    </shape>
+    <shape type="rect" topLeftX="530" topLeftY="248" width="340" height="6">
+      <fill><fillColor color="rgba(255,255,255,0.1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="530" topLeftY="248" width="280" height="6">
+      <fill><fillColor color="rgba(255,180,80,0.8)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="264" width="30" height="24">
+      <content textType="body" fontSize="14" bold="true" color="rgba(255,220,100,1)" textAlign="center" wrap="false"><p>3</p></content>
+    </shape>
+    <shape type="text" topLeftX="565" topLeftY="264" width="200" height="24">
+      <content textType="body" fontSize="12" color="rgba(255,255,255,1)" wrap="false"><p>电机电流</p></content>
+    </shape>
+    <shape type="rect" topLeftX="530" topLeftY="290" width="340" height="6">
+      <fill><fillColor color="rgba(255,255,255,0.1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="530" topLeftY="290" width="240" height="6">
+      <fill><fillColor color="rgba(255,220,100,0.7)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="530" topLeftY="308" width="350" height="120">
+      <content textType="body" fontSize="11" color="rgba(160,180,210,1)" lineSpacing="multiple:1.9">
+        <p>4. 流量　　5. 压力　　6. 温度</p>
+        <p>7. 热电偶温度　　8. 电机电压</p>
+        <p>　</p>
+        <p><span color="rgba(0,212,255,1)">输出：</span>Top3 根因传感器 + 贡献度</p>
+        <p><span color="rgba(0,212,255,1)">结论：</span>中文根因分析 + 针对性运维建议</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>08 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>核心技术三是基于特征重要度的故障根因分析。从训练好的随机森林模型中提取feature_importances_，评估每路传感器对故障预测的贡献程度，贡献度越高对故障判定影响越大。系统取Top3贡献度最高的传感器作为根因，结合物理含义生成针对性运维建议，如振动异常建议检查轴承磨损、流量异常建议检查管路阀门等。这是智能诊断的最后一环，将算法输出转化为运维人员可操作的建议。</p>
+    </content>
+  </note>
+</slide>

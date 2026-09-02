@@ -1,0 +1,121 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="280" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>05 · SYSTEM FUNCTIONS</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="700" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>系统功能展示</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="125" width="500" height="24">
+      <content textType="body" fontSize="13" color="rgba(160,180,210,1)" wrap="false">
+        <p>深色工业科技风 · 4 个核心页面 · 完整业务闭环</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="165" width="410" height="145">
+      <fill><fillColor color="rgba(0,212,255,0.06)"/></fill>
+      <border color="rgba(0,212,255,0.35)" width="1"/>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="165" width="4" height="145">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="178" width="370" height="26">
+      <content textType="body" fontSize="16" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>设备运维管理驾驶舱</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="210" width="370" height="90">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.7">
+        <p>· 5 项 KPI 指标卡（设备数/数据量/健康率/告警数/高危数）</p>
+        <p>· 6 类可视化图表（状态环/健康柱/级别饼/趋势/特征重要度/告警流）</p>
+        <p>· 设备健康档案表（健康度评分/状态标签/未处理告警/跳转监控）</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="490" topLeftY="165" width="410" height="145">
+      <fill><fillColor color="rgba(246,223,172,0.06)"/></fill>
+      <border color="rgba(246,223,172,0.35)" width="1"/>
+    </shape>
+    <shape type="rect" topLeftX="490" topLeftY="165" width="4" height="145">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="510" topLeftY="178" width="370" height="26">
+      <content textType="body" fontSize="16" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>传感器实时监控与诊断</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="510" topLeftY="210" width="370" height="90">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.7">
+        <p>· 3 大仪表盘（健康度/故障概率/异常分数）+ 8 路传感器 gauge 网格</p>
+        <p>· 4 组时序曲线（渐变面积填充），设备与点数切换</p>
+        <p>· 三大算法串联智能诊断，Top3 根因进度条 + 运维建议</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="325" width="410" height="145">
+      <fill><fillColor color="rgba(246,223,172,0.06)"/></fill>
+      <border color="rgba(246,223,172,0.35)" width="1"/>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="325" width="4" height="145">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="338" width="370" height="26">
+      <content textType="body" fontSize="16" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>故障告警管理面板</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="370" width="370" height="90">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.7">
+        <p>· 4 项统计卡 + 级别占比环形图 + 告警趋势堆叠柱状图</p>
+        <p>· 告警列表（10 列完整信息，根因长文本自动换行）</p>
+        <p>· 设备/状态/级别三维组合筛选，一键扫描，告警处置闭环</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="490" topLeftY="325" width="410" height="145">
+      <fill><fillColor color="rgba(0,212,255,0.06)"/></fill>
+      <border color="rgba(0,212,255,0.35)" width="1"/>
+    </shape>
+    <shape type="rect" topLeftX="490" topLeftY="325" width="4" height="145">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="510" topLeftY="338" width="370" height="26">
+      <content textType="body" fontSize="16" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>运维处置记录</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="510" topLeftY="370" width="370" height="90">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.7">
+        <p>· 3 项统计（累计处置/涉及设备/运维人员，前端 Set 去重）</p>
+        <p>· 完整运维处置记录表（关联告警 ID/告警内容/处置措施/处理人/时间）</p>
+        <p>· 告警处置时自动创建运维记录，形成"告警→处置→记录"闭环</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>09 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>系统包含四个核心页面，采用深色工业科技风界面。第一页是设备运维管理驾驶舱，包含5项KPI指标卡、6类可视化图表和设备健康档案表。第二页是传感器实时监控与诊断，包含3大仪表盘、8路传感器gauge、4组时序曲线和三大算法串联智能诊断。第三页是故障告警管理面板，包含统计卡、级别筛选、趋势图和告警处置功能。第四页是运维处置记录，包含统计和完整处置历史。告警处置时自动创建运维记录，形成完整业务闭环。</p>
+    </content>
+  </note>
+</slide>

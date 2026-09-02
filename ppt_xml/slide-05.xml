@@ -1,0 +1,156 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="35" width="260" height="24">
+      <content textType="body" fontSize="12" color="rgba(0,212,255,1)" letterSpacing="2" wrap="false">
+        <p>03 · DATA CONSTRUCTION</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="60" width="500" height="40">
+      <content textType="title" fontSize="28" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>数据资源构建</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="108" width="50" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="130" width="400" height="175">
+      <fill><fillColor color="rgba(0,212,255,0.05)"/></fill>
+      <border color="rgba(0,212,255,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="142" width="360" height="24">
+      <content textType="body" fontSize="15" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>SKAB 工业水泵异常检测数据集</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="172" width="360" height="120">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.7">
+        <p>来源：Skoltech Anomaly Benchmark（公开数据集）</p>
+        <p>规模：38 个 CSV 文件，原始 46860 条样本</p>
+        <p>场景：anomaly-free / valve1 / valve2 / other 四类</p>
+        <p>传感器：8 路（振动×2、电流、压力、温度、热电偶、电压、流量）</p>
+        <p>标签：anomaly（0=正常，1=异常）+ fault_type 故障类型</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="320" width="400" height="155">
+      <fill><fillColor color="rgba(246,223,172,0.05)"/></fill>
+      <border color="rgba(246,223,172,0.3)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="332" width="360" height="24">
+      <content textType="body" fontSize="15" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>预处理流程（6 步）</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="80" topLeftY="362" width="360" height="105">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.7">
+        <p>① 数据合并：38 个 CSV 合并为单一数据集</p>
+        <p>② 标签填充：正常工况 anomaly 列填充为 0</p>
+        <p>③ 时间转换：datetime 统一标准格式，删除无效行</p>
+        <p>④ 两次去重：全字段去重 + 业务关键字段二次去重</p>
+        <p>⑤ 缺失值处理：ffill 向前填充 + 均值填充残余缺失</p>
+        <p>⑥ 排序输出：按时间戳升序，输出 46669 条干净样本</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="500" topLeftY="130" width="400" height="24">
+      <content textType="body" fontSize="15" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>4 台虚拟设备数据分布</p>
+      </content>
+    </shape>
+    <table topLeftX="500" topLeftY="162" width="400" height="180">
+      <colgroup>
+        <col width="90"/>
+        <col width="110"/>
+        <col width="70"/>
+        <col width="70"/>
+        <col width="60"/>
+      </colgroup>
+      <tr height="32">
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>设备编号</p></content></td>
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>故障场景</p></content></td>
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>样本数</p></content></td>
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>异常数</p></content></td>
+        <td><fill><fillColor color="rgba(0,212,255,0.2)"/></fill><content textType="body" fontSize="11" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>健康度</p></content></td>
+      </tr>
+      <tr height="30">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>PUMP-001</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>正常工况</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>9,401</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(0,212,255,1)" textAlign="center"><p>0</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(0,255,150,1)" textAlign="center"><p>100%</p></content></td>
+      </tr>
+      <tr height="30">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>PUMP-002</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>valve1 故障</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>18,162</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(255,180,80,1)" textAlign="center"><p>6,309</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(255,200,80,1)" textAlign="center"><p>65.3%</p></content></td>
+      </tr>
+      <tr height="30">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>PUMP-003</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>valve2 故障</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>4,312</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(255,180,80,1)" textAlign="center"><p>1,517</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(255,200,80,1)" textAlign="center"><p>64.8%</p></content></td>
+      </tr>
+      <tr height="30">
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>PUMP-004</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>other 故障</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>14,794</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(255,100,100,1)" textAlign="center"><p>5,415</p></content></td>
+        <td><content textType="body" fontSize="10" color="rgba(255,200,80,1)" textAlign="center"><p>63.4%</p></content></td>
+      </tr>
+      <tr height="28">
+        <td><fill><fillColor color="rgba(255,255,255,0.05)"/></fill><content textType="body" fontSize="10" bold="true" color="rgba(255,255,255,1)" textAlign="center"><p>合计</p></content></td>
+        <td><fill><fillColor color="rgba(255,255,255,0.05)"/></fill><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>4 类场景</p></content></td>
+        <td><fill><fillColor color="rgba(255,255,255,0.05)"/></fill><content textType="body" fontSize="10" bold="true" color="rgba(0,212,255,1)" textAlign="center"><p>46,669</p></content></td>
+        <td><fill><fillColor color="rgba(255,255,255,0.05)"/></fill><content textType="body" fontSize="10" bold="true" color="rgba(255,180,80,1)" textAlign="center"><p>13,241</p></content></td>
+        <td><fill><fillColor color="rgba(255,255,255,0.05)"/></fill><content textType="body" fontSize="10" color="rgba(200,220,240,1)" textAlign="center"><p>71.6%</p></content></td>
+      </tr>
+    </table>
+    <shape type="rect" topLeftX="500" topLeftY="360" width="400" height="115">
+      <fill><fillColor color="rgba(0,212,255,0.04)"/></fill>
+      <border color="rgba(0,212,255,0.2)" width="1"/>
+    </shape>
+    <shape type="text" topLeftX="520" topLeftY="372" width="360" height="24">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>数据质量指标</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="520" topLeftY="402" width="170" height="60">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.8">
+        <p>缺失值：0 条</p>
+        <p>重复行：0 条</p>
+        <p>时间戳：连续无间断</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="700" topLeftY="402" width="180" height="60">
+      <content textType="body" fontSize="11" color="rgba(180,200,230,1)" lineSpacing="multiple:1.8">
+        <p>传感器值：均在合理范围</p>
+        <p>数据库：SQLite 单文件 5.5MB</p>
+        <p>入库：4 表关联完整</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="495" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="495" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>05 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>数据资源构建使用SKAB公开工业水泵异常检测数据集，包含38个CSV文件、4类故障场景、8路传感器。经过6步预处理流程（数据合并、标签填充、时间转换、两次去重、缺失值处理、排序输出），最终得到46669条干净样本，缺失值和重复行均为0。数据按故障场景映射为4台虚拟设备入库SQLite，其中PUMP-001为正常工况健康度100%，其余3台为故障场景健康度63%-65%。</p>
+    </content>
+  </note>
+</slide>

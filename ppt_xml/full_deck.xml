@@ -1,0 +1,2302 @@
+<presentation id="EXStsYUrYlMhhkdsjZwcerTjnch" xmlns="https://www.larkoffice.com/sml/2.0" width="960" height="540">
+  <title>面向车间设备运维的智能故障预警系统-课程设计答辩</title>
+  <theme>
+    <textStyles>
+      <headline fontColor="rgba(31, 35, 41, 1)"/>
+      <sub-headline fontColor="rgba(31, 35, 41, 1)"/>
+      <body fontColor="rgba(31, 35, 41, 1)"/>
+      <caption fontColor="rgba(155, 158, 162, 1)" fontSize="14"/>
+    </textStyles>
+  </theme>
+  <slide id="ptt">
+    <style>
+      <fill id="ftt">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(18, 32, 70, 1) 50%,rgba(12, 24, 55, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="4" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bGT">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="4" height="200" topLeftX="60" topLeftY="120" presetHandlers="0" type="rect" id="bGO">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.6)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="700" height="40" topLeftX="100" topLeftY="130" type="text" id="bGw">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>MANUFACTURING INTELLIGENCE · COURSE DESIGN DEFENSE</p>
+        </content>
+      </shape>
+      <shape width="780" height="120" topLeftX="100" topLeftY="185" type="text" id="bGv">
+        <content textType="title" fontSize="44" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" lineSpacing="multiple:1.2">
+          <p>面向车间设备运维的</p>
+          <p>智能故障预警系统</p>
+        </content>
+      </shape>
+      <shape width="120" height="3" topLeftX="100" topLeftY="320" presetHandlers="0" type="rect" id="bGY">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="600" height="30" topLeftX="100" topLeftY="335" type="text" id="bGp">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" wrap="false">
+          <p>基于孤立森林 · 随机森林 · 特征重要度的 B/S 架构智能运维平台</p>
+        </content>
+      </shape>
+      <shape width="960" height="1" topLeftX="0" topLeftY="460" presetHandlers="0" type="rect" id="bGz">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.3)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="300" height="50" topLeftX="100" topLeftY="475" type="text" id="bGm">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" lineSpacing="multiple:1.6">
+          <p>北华大学 · 机械工程学院</p>
+          <p>智能制造工程专业</p>
+        </content>
+      </shape>
+      <shape width="250" height="50" topLeftX="430" topLeftY="475" type="text" id="bGP">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" lineSpacing="multiple:1.6">
+          <p>学生姓名：_______________</p>
+          <p>学　　号：_______________</p>
+        </content>
+      </shape>
+      <shape width="200" height="50" topLeftX="700" topLeftY="475" type="text" id="bGD">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" lineSpacing="multiple:1.6">
+          <p>指导教师：_______________</p>
+          <p>2026 年 9 月</p>
+        </content>
+      </shape>
+      <shape width="80" height="80" topLeftX="860" topLeftY="40" alpha="0.08" type="ellipse" id="bGh">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="45" height="45" topLeftX="895" topLeftY="70" alpha="0.06" type="ellipse" id="bGX">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+    </data>
+    <note id="bGG">
+      <content>
+        <p>各位老师好，我是智能制造工程专业的学生。本次课程设计的题目是&quot;面向车间设备运维的智能故障预警系统&quot;。系统基于SKAB工业水泵数据集，运用孤立森林、随机森林和特征重要度三项课程技术，构建了B/S架构的智能运维平台。下面我将从研究背景、系统设计、核心技术、测试验证等方面进行汇报。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptA">
+    <style>
+      <fill id="ftA">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bzF">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="200" height="30" topLeftX="60" topLeftY="40" type="text" id="bzU">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="3" wrap="false">
+          <p>CONTENTS</p>
+        </content>
+      </shape>
+      <shape width="400" height="50" topLeftX="60" topLeftY="70" type="text" id="bzu">
+        <content textType="title" fontSize="32" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>汇报大纲</p>
+        </content>
+      </shape>
+      <shape width="60" height="3" topLeftX="60" topLeftY="125" presetHandlers="0" type="rect" id="bzL">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="70" topLeftX="60" topLeftY="170" type="text" id="bzt">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>01</p>
+        </content>
+      </shape>
+      <shape width="320" height="30" topLeftX="110" topLeftY="165" type="text" id="bzg">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>研究背景与意义</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="110" topLeftY="198" type="text" id="bTG">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" wrap="false">
+          <p>设备运维痛点 · 研究目标 · 技术路线</p>
+        </content>
+      </shape>
+      <line id="bzj" startX="60" startY="240" endX="440.0013157871956" endY="240">
+        <border color="rgba(0, 212, 255, 0.2)" width="1"/>
+      </line>
+      <shape width="380" height="70" topLeftX="60" topLeftY="260" type="text" id="bzQ">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>02</p>
+        </content>
+      </shape>
+      <shape width="320" height="30" topLeftX="110" topLeftY="255" type="text" id="bzb">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>系统方案设计</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="110" topLeftY="288" type="text" id="bTz">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" wrap="false">
+          <p>B/S 四层架构 · 功能模块 · 数据库设计</p>
+        </content>
+      </shape>
+      <line id="bzW" startX="60" startY="330" endX="440.0013157871956" endY="330">
+        <border color="rgba(0, 212, 255, 0.2)" width="1"/>
+      </line>
+      <shape width="380" height="70" topLeftX="60" topLeftY="350" type="text" id="bzZ">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>03</p>
+        </content>
+      </shape>
+      <shape width="320" height="30" topLeftX="110" topLeftY="345" type="text" id="bzV">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>数据资源构建</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="110" topLeftY="378" type="text" id="bzc">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" wrap="false">
+          <p>SKAB 数据集 · 预处理 · 46669 条入库</p>
+        </content>
+      </shape>
+      <line id="bzC" startX="60" startY="420" endX="440.0013157871956" endY="420">
+        <border color="rgba(0, 212, 255, 0.2)" width="1"/>
+      </line>
+      <shape width="380" height="70" topLeftX="520" topLeftY="170" type="text" id="bzS">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>04</p>
+        </content>
+      </shape>
+      <shape width="320" height="30" topLeftX="570" topLeftY="165" type="text" id="bza">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>核心技术实现</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="570" topLeftY="198" type="text" id="bzr">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" wrap="false">
+          <p>孤立森林 · 随机森林 · 特征重要度</p>
+        </content>
+      </shape>
+      <line id="bzA" startX="520" startY="240" endX="900.0013157871956" endY="240">
+        <border color="rgba(246, 223, 172, 0.2)" width="1"/>
+      </line>
+      <shape width="380" height="70" topLeftX="520" topLeftY="260" type="text" id="bzk">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>05</p>
+        </content>
+      </shape>
+      <shape width="320" height="30" topLeftX="570" topLeftY="255" type="text" id="bzq">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>系统测试与验证</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="570" topLeftY="288" type="text" id="bzy">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" wrap="false">
+          <p>38 个自动化用例 · 业务闭环 · bug 修复</p>
+        </content>
+      </shape>
+      <line id="bzI" startX="520" startY="330" endX="900.0013157871956" endY="330">
+        <border color="rgba(246, 223, 172, 0.2)" width="1"/>
+      </line>
+      <shape width="380" height="70" topLeftX="520" topLeftY="350" type="text" id="bzd">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>06</p>
+        </content>
+      </shape>
+      <shape width="320" height="30" topLeftX="570" topLeftY="345" type="text" id="bzx">
+        <content fontSize="18" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>总结与展望</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="570" topLeftY="378" type="text" id="bzn">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" wrap="false">
+          <p>AI 使用披露 · 创新点 · 未来方向</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="490" type="text" id="bzK">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="490" type="text" id="bzH">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>02 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bzB">
+      <content>
+        <p>本次汇报分为六个部分：首先介绍研究背景与意义，说明设备运维的痛点和研究目标；然后展示系统方案设计，包括B/S四层架构和功能模块；第三部分介绍数据资源构建，使用SKAB数据集完成46669条数据预处理和入库；第四部分重点讲解三大核心技术的实现；第五部分展示系统测试与验证结果；最后进行总结与展望。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptg">
+    <style>
+      <fill id="ftg">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bzo">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="260" height="24" topLeftX="60" topLeftY="35" type="text" id="bGk">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>01 · RESEARCH BACKGROUND</p>
+        </content>
+      </shape>
+      <shape width="500" height="40" topLeftX="60" topLeftY="60" type="text" id="bzO">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>研究背景与意义</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bzp">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="400" height="24" topLeftX="60" topLeftY="130" type="text" id="bzl">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" bold="true" wrap="false">
+          <p>传统设备运维模式的三大痛点</p>
+        </content>
+      </shape>
+      <shape width="400" height="90" topLeftX="60" topLeftY="165" presetHandlers="0" type="rect" id="bGU">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.06)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="40" height="30" topLeftX="80" topLeftY="175" type="text" id="bzD">
+        <content fontSize="22" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>01</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="125" topLeftY="178" type="text" id="bzf">
+        <content fontSize="15" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>故障发现滞后</p>
+        </content>
+      </shape>
+      <shape width="320" height="40" topLeftX="125" topLeftY="205" type="text" id="bzs">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" lineSpacing="multiple:1.4">
+          <p>依赖定期巡检和事后维修，故障发生后才响应，导致生产线非计划停机，造成显著经济损失。</p>
+        </content>
+      </shape>
+      <shape width="400" height="90" topLeftX="60" topLeftY="270" presetHandlers="0" type="rect" id="bGH">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.06)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="40" height="30" topLeftX="80" topLeftY="280" type="text" id="bzw">
+        <content fontSize="22" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>02</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="125" topLeftY="283" type="text" id="bzh">
+        <content fontSize="15" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>运维成本偏高</p>
+        </content>
+      </shape>
+      <shape width="320" height="40" topLeftX="125" topLeftY="310" type="text" id="bzR">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" lineSpacing="multiple:1.4">
+          <p>缺乏数据驱动的决策支持，存在过度维护浪费资源或维护不足导致故障的两难问题。</p>
+        </content>
+      </shape>
+      <shape width="400" height="90" topLeftX="60" topLeftY="375" presetHandlers="0" type="rect" id="bzN">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.06)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="40" height="30" topLeftX="80" topLeftY="385" type="text" id="bGb">
+        <content fontSize="22" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>03</p>
+        </content>
+      </shape>
+      <shape width="320" height="24" topLeftX="125" topLeftY="388" type="text" id="bzz">
+        <content fontSize="15" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>根因定位困难</p>
+        </content>
+      </shape>
+      <shape width="320" height="40" topLeftX="125" topLeftY="415" type="text" id="bzv">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" lineSpacing="multiple:1.4">
+          <p>故障发生后无法快速定位诱因，依赖运维人员经验判断，检修时间长、效率低。</p>
+        </content>
+      </shape>
+      <shape width="400" height="335" topLeftX="500" topLeftY="130" presetHandlers="0" type="rect" id="bzE">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="360" height="28" topLeftX="520" topLeftY="150" type="text" id="bGg">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>研究意义：数据驱动的预测性维护</p>
+        </content>
+      </shape>
+      <line id="bzG" startX="520" startY="185" endX="880.0013888862097" endY="185">
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+      </line>
+      <shape width="360" height="60" topLeftX="520" topLeftY="205" type="text" id="bzX">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(220, 230, 245, 1)" lineSpacing="multiple:1.6">
+          <p>基于设备多传感器时序数据，运用机器学习算法实现异常检测、故障预测与根因分析，在故障发生前提前预警。</p>
+        </content>
+      </shape>
+      <shape width="10" height="10" topLeftX="525" topLeftY="285" type="ellipse" id="bzM">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="340" height="24" topLeftX="545" topLeftY="280" type="text" id="bGS">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>减少非计划停机时间</p>
+        </content>
+      </shape>
+      <shape width="10" height="10" topLeftX="525" topLeftY="325" type="ellipse" id="bzm">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="340" height="24" topLeftX="545" topLeftY="320" type="text" id="bzY">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>降低设备运维综合成本</p>
+        </content>
+      </shape>
+      <shape width="10" height="10" topLeftX="525" topLeftY="365" type="ellipse" id="bze">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="340" height="24" topLeftX="545" topLeftY="360" type="text" id="bGV">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>提升设备综合效率（OEE）</p>
+        </content>
+      </shape>
+      <shape width="10" height="10" topLeftX="525" topLeftY="405" type="ellipse" id="bzT">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="340" height="24" topLeftX="545" topLeftY="400" type="text" id="bzJ">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>辅助运维人员快速定位根因</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="490" type="text" id="bGd">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="490" type="text" id="bzP">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>03 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bzi">
+      <content>
+        <p>传统设备运维主要依赖定期巡检和事后维修，存在三大痛点：故障发现滞后导致非计划停机、运维成本偏高、根因定位困难。本研究的意义在于通过数据驱动的预测性维护，在故障发生前提前预警，辅助运维人员快速定位根因，从而减少停机时间、降低运维成本、提升设备综合效率。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptN">
+    <style>
+      <fill id="ftN">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bGs">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="260" height="24" topLeftX="60" topLeftY="35" type="text" id="bGW">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>02 · SYSTEM ARCHITECTURE</p>
+        </content>
+      </shape>
+      <shape width="500" height="40" topLeftX="60" topLeftY="60" type="text" id="bGL">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>系统总体架构</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bGR">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="500" height="24" topLeftX="60" topLeftY="125" type="text" id="bGN">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" wrap="false">
+          <p>B/S 四层架构 · 表现层 / 业务逻辑层 / 算法层 / 数据层</p>
+        </content>
+      </shape>
+      <shape width="680" height="65" topLeftX="80" topLeftY="165" presetHandlers="0" type="rect" id="bGj">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.1)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.5)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="100" height="45" topLeftX="95" topLeftY="175" type="text" id="bGZ">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" lineSpacing="multiple:1.3" textAlign="center">
+          <p>表现层</p>
+          <p>前端</p>
+        </content>
+      </shape>
+      <line id="bGE" startX="199.99999999999997" startY="180" endX="199.99999999999997" endY="215.01428280002318">
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+      </line>
+      <shape width="530" height="40" topLeftX="215" topLeftY="180" type="text" id="bGq">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(220, 230, 245, 1)">
+          <p>设备运维驾驶舱 · 传感器实时监控 · 故障告警管理 · 运维处置记录</p>
+          <p>HTML / CSS / JavaScript + ECharts 可视化 · 深色工业科技风</p>
+        </content>
+      </shape>
+      <line id="bGQ" startX="420" startY="230" endX="420" endY="248.02775637731995">
+        <border color="rgba(0, 212, 255, 0.4)"/>
+        <endArrow type="arrow"/>
+      </line>
+      <shape width="680" height="65" topLeftX="80" topLeftY="250" presetHandlers="0" type="rect" id="bGA">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.08)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.4)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="100" height="45" topLeftX="95" topLeftY="260" type="text" id="bGM">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" lineSpacing="multiple:1.3" textAlign="center">
+          <p>业务逻辑层</p>
+          <p>后端</p>
+        </content>
+      </shape>
+      <line id="bGa" startX="200" startY="265" endX="200" endY="300.0142828000232">
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+      </line>
+      <shape width="530" height="40" topLeftX="215" topLeftY="265" type="text" id="bGr">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(220, 230, 245, 1)">
+          <p>Flask 框架 · 13 个 RESTful API · 4 个页面路由 · 业务流程编排</p>
+          <p>扫描→告警→处置→运维记录完整闭环 · 综合预警级别判定</p>
+        </content>
+      </shape>
+      <line id="bGC" startX="419.99999999999994" startY="315" endX="419.99999999999994" endY="333.0277563773199">
+        <border color="rgba(246, 223, 172, 0.4)"/>
+        <endArrow type="arrow"/>
+      </line>
+      <shape width="680" height="65" topLeftX="80" topLeftY="335" presetHandlers="0" type="rect" id="bGe">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.08)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.4)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="100" height="45" topLeftX="95" topLeftY="345" type="text" id="bGB">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" lineSpacing="multiple:1.3" textAlign="center">
+          <p>算法层</p>
+          <p>AI 模型</p>
+        </content>
+      </shape>
+      <line id="bGc" startX="199.99999999999994" startY="350" endX="199.99999999999994" endY="385.0142828000232">
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+      </line>
+      <shape width="530" height="40" topLeftX="215" topLeftY="350" type="text" id="bGK">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(220, 230, 245, 1)">
+          <p>孤立森林（时序异常检测）· 随机森林（故障预测，准确率 93.04%）</p>
+          <p>特征重要度（根因分析 Top3 + 运维建议）· 模型 pkl 持久化</p>
+        </content>
+      </shape>
+      <line id="bGJ" startX="419.99999999999994" startY="400" endX="419.99999999999994" endY="418.0277563773199">
+        <border color="rgba(0, 212, 255, 0.4)"/>
+        <endArrow type="arrow"/>
+      </line>
+      <shape width="680" height="55" topLeftX="80" topLeftY="420" presetHandlers="0" type="rect" id="bGx">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.06)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="100" height="40" topLeftX="95" topLeftY="428" type="text" id="bGn">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" lineSpacing="multiple:1.3" textAlign="center">
+          <p>数据层</p>
+          <p>SQLite</p>
+        </content>
+      </shape>
+      <line id="bGI" startX="200.00000000000006" startY="432" endX="200.00000000000006" endY="465.0151480384384">
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+      </line>
+      <shape width="530" height="35" topLeftX="215" topLeftY="432" type="text" id="bGi">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(220, 230, 245, 1)">
+          <p>4 张核心表：devices（设备）· sensor_data（46669 条传感器时序）· alerts（告警）· maintenance（运维记录）</p>
+        </content>
+      </shape>
+      <shape width="120" height="310" topLeftX="790" topLeftY="165" presetHandlers="0" type="rect" id="bGo">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(255, 255, 255, 0.1)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="100" height="24" topLeftX="800" topLeftY="180" type="text" id="bGu">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" textAlign="center" wrap="false">
+          <p>技术栈</p>
+        </content>
+      </shape>
+      <line id="bGy" startX="810" startY="210" endX="890.0062497558785" endY="210">
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+      </line>
+      <shape width="100" height="240" topLeftX="800" topLeftY="225" type="text" id="bGl">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:2" textAlign="center">
+          <p>Python 3.9</p>
+          <p>Flask 3.x</p>
+          <p>scikit-learn</p>
+          <p>pandas / numpy</p>
+          <p>SQLite 3</p>
+          <p>ECharts 5</p>
+          <p>HTML / CSS / JS</p>
+          <p>unittest</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bGF">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bGt">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>04 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bGf">
+      <content>
+        <p>系统采用B/S四层架构。最上层是表现层，包含四个前端页面，使用HTML/CSS/JavaScript和ECharts实现深色工业科技风界面。第二层是业务逻辑层，基于Flask框架提供13个RESTful API，负责业务流程编排，实现扫描到告警到处置到运维记录的完整闭环。第三层是算法层，包含孤立森林异常检测、随机森林故障预测（准确率93.04%）和特征重要度根因分析三大模型。最底层是数据层，使用SQLite存储4张核心表，共46669条传感器时序数据。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptl">
+    <style>
+      <fill id="ftl">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bmJ">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="260" height="24" topLeftX="60" topLeftY="35" type="text" id="bmx">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>03 · DATA CONSTRUCTION</p>
+        </content>
+      </shape>
+      <shape width="500" height="40" topLeftX="60" topLeftY="60" type="text" id="bmy">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>数据资源构建</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bmI">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="400" height="175" topLeftX="60" topLeftY="130" presetHandlers="0" type="rect" id="bmH">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.05)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="360" height="24" topLeftX="80" topLeftY="142" type="text" id="bOO">
+        <content fontSize="15" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>SKAB 工业水泵异常检测数据集</p>
+        </content>
+      </shape>
+      <shape width="360" height="120" topLeftX="80" topLeftY="172" type="text" id="bmE">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.7">
+          <p>来源：Skoltech Anomaly Benchmark（公开数据集）</p>
+          <p>规模：38 个 CSV 文件，原始 46860 条样本</p>
+          <p>场景：anomaly-free / valve1 / valve2 / other 四类</p>
+          <p>传感器：8 路（振动×2、电流、压力、温度、热电偶、电压、流量）</p>
+          <p>标签：anomaly（0=正常，1=异常）+ fault_type 故障类型</p>
+        </content>
+      </shape>
+      <shape width="400" height="155" topLeftX="60" topLeftY="320" presetHandlers="0" type="rect" id="bmq">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="360" height="24" topLeftX="80" topLeftY="332" type="text" id="bmr">
+        <content fontSize="15" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>预处理流程（6 步）</p>
+        </content>
+      </shape>
+      <shape width="360" height="105" topLeftX="80" topLeftY="362" type="text" id="bmA">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.7">
+          <p>① 数据合并：38 个 CSV 合并为单一数据集</p>
+          <p>② 标签填充：正常工况 anomaly 列填充为 0</p>
+          <p>③ 时间转换：datetime 统一标准格式，删除无效行</p>
+          <p>④ 两次去重：全字段去重 + 业务关键字段二次去重</p>
+          <p>⑤ 缺失值处理：ffill 向前填充 + 均值填充残余缺失</p>
+          <p>⑥ 排序输出：按时间戳升序，输出 46669 条干净样本</p>
+        </content>
+      </shape>
+      <shape width="400" height="24" topLeftX="500" topLeftY="130" type="text" id="bmd">
+        <content fontSize="15" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>4 台虚拟设备数据分布</p>
+        </content>
+      </shape>
+      <table id="bmM" width="400" height="180" topLeftX="500" topLeftY="162">
+        <colgroup>
+          <col span="1" width="90"/>
+          <col span="1" width="110"/>
+          <col span="2" width="70"/>
+          <col span="1" width="60"/>
+        </colgroup>
+        <tr height="32">
+          <td id="bOY">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>设备编号</p>
+            </content>
+          </td>
+          <td id="bmf">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>故障场景</p>
+            </content>
+          </td>
+          <td id="bms">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>样本数</p>
+            </content>
+          </td>
+          <td id="bmW">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>异常数</p>
+            </content>
+          </td>
+          <td id="bmZ">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>健康度</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bmS">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>PUMP-001</p>
+            </content>
+          </td>
+          <td id="bOz">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>正常工况</p>
+            </content>
+          </td>
+          <td id="bOh">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>9,401</p>
+            </content>
+          </td>
+          <td id="bmR">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)">
+              <p>0</p>
+            </content>
+          </td>
+          <td id="bmN">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(0, 255, 150, 1)">
+              <p>100%</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bmj">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>PUMP-002</p>
+            </content>
+          </td>
+          <td id="bmQ">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>valve1 故障</p>
+            </content>
+          </td>
+          <td id="bmV">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>18,162</p>
+            </content>
+          </td>
+          <td id="bOv">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 180, 80, 1)">
+              <p>6,309</p>
+            </content>
+          </td>
+          <td id="bmo">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 200, 80, 1)">
+              <p>65.3%</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bmu">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>PUMP-003</p>
+            </content>
+          </td>
+          <td id="bmt">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>valve2 故障</p>
+            </content>
+          </td>
+          <td id="bmb">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>4,312</p>
+            </content>
+          </td>
+          <td id="bOG">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 180, 80, 1)">
+              <p>1,517</p>
+            </content>
+          </td>
+          <td id="bml">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 200, 80, 1)">
+              <p>64.8%</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bmF">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>PUMP-004</p>
+            </content>
+          </td>
+          <td id="bmL">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>other 故障</p>
+            </content>
+          </td>
+          <td id="bmg">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>14,794</p>
+            </content>
+          </td>
+          <td id="bOD">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 100, 100, 1)">
+              <p>5,415</p>
+            </content>
+          </td>
+          <td id="bOw">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 200, 80, 1)">
+              <p>63.4%</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="28">
+          <td id="bme">
+            <fill>
+              <fillColor color="rgba(255, 255, 255, 0.05)"/>
+            </fill>
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>合计</p>
+            </content>
+          </td>
+          <td id="bmB">
+            <fill>
+              <fillColor color="rgba(255, 255, 255, 0.05)"/>
+            </fill>
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>4 类场景</p>
+            </content>
+          </td>
+          <td id="bmn">
+            <fill>
+              <fillColor color="rgba(255, 255, 255, 0.05)"/>
+            </fill>
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true">
+              <p>46,669</p>
+            </content>
+          </td>
+          <td id="bmK">
+            <fill>
+              <fillColor color="rgba(255, 255, 255, 0.05)"/>
+            </fill>
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(255, 180, 80, 1)" bold="true">
+              <p>13,241</p>
+            </content>
+          </td>
+          <td id="bmU">
+            <fill>
+              <fillColor color="rgba(255, 255, 255, 0.05)"/>
+            </fill>
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>71.6%</p>
+            </content>
+          </td>
+        </tr>
+      </table>
+      <shape width="400" height="115" topLeftX="500" topLeftY="360" presetHandlers="0" type="rect" id="bma">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.04)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.2)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="360" height="24" topLeftX="520" topLeftY="372" type="text" id="bmc">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>数据质量指标</p>
+        </content>
+      </shape>
+      <shape width="170" height="60" topLeftX="520" topLeftY="402" type="text" id="bmC">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.8">
+          <p>缺失值：0 条</p>
+          <p>重复行：0 条</p>
+          <p>时间戳：连续无间断</p>
+        </content>
+      </shape>
+      <shape width="180" height="60" topLeftX="700" topLeftY="402" type="text" id="bmk">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.8">
+          <p>传感器值：均在合理范围</p>
+          <p>数据库：SQLite 单文件 5.5MB</p>
+          <p>入库：4 表关联完整</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bOT">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bOm">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>05 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bOP">
+      <content>
+        <p>数据资源构建使用SKAB公开工业水泵异常检测数据集，包含38个CSV文件、4类故障场景、8路传感器。经过6步预处理流程（数据合并、标签填充、时间转换、两次去重、缺失值处理、排序输出），最终得到46669条干净样本，缺失值和重复行均为0。数据按故障场景映射为4台虚拟设备入库SQLite，其中PUMP-001为正常工况健康度100%，其余3台为故障场景健康度63%-65%。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptk">
+    <style>
+      <fill id="ftk">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bTc">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bTh">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>04 · CORE TECHNOLOGY 1 / 3</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bTJ">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>核心技术一：时序异常检测</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bTW">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="200" height="32" topLeftX="60" topLeftY="125" presetHandlers="0" type="rect" id="bTv">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.15)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="180" height="24" topLeftX="70" topLeftY="130" type="text" id="bTE">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" textAlign="center" wrap="false">
+          <p>孤立森林 IsolationForest</p>
+        </content>
+      </shape>
+      <shape width="420" height="150" topLeftX="60" topLeftY="175" presetHandlers="0" type="rect" id="bTj">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="24" topLeftX="80" topLeftY="187" type="text" id="bTD">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>算法原理</p>
+        </content>
+      </shape>
+      <shape width="380" height="100" topLeftX="80" topLeftY="217" type="text" id="bTM">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.6">
+          <p>通过随机划分特征空间构建多棵孤立树（iTree），异常点由于数量少且特征值偏离正常分布，在随机划分中更容易被隔离——从根节点到叶节点的路径长度更短。</p>
+          <p>计算每个样本的平均路径长度，转化为异常分数（Anomaly Score），越接近 1 越可能是异常。</p>
+        </content>
+      </shape>
+      <shape width="420" height="140" topLeftX="60" topLeftY="335" presetHandlers="0" type="rect" id="bTf">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="24" topLeftX="80" topLeftY="347" type="text" id="bTs">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>实现细节</p>
+        </content>
+      </shape>
+      <shape width="380" height="95" topLeftX="80" topLeftY="377" type="text" id="bTu">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.7">
+          <p>训练数据：仅使用 anomaly=0 的正常工况样本（9401 条）</p>
+          <p>模型参数：n_estimators=100，contamination=0.05</p>
+          <p>输入特征：8 路传感器值（振动×2、电流、压力、温度等）</p>
+          <p>输出：is_anomaly（0=正常，1=异常）+ anomaly_score</p>
+          <p>模型持久化：anomaly_iforest.pkl（约 1.2MB）</p>
+        </content>
+      </shape>
+      <shape width="390" height="100" topLeftX="510" topLeftY="125" presetHandlers="0" type="rect" id="bTw">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.08)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.4)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="137" type="text" id="bTR">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>在系统中的作用</p>
+        </content>
+      </shape>
+      <shape width="350" height="50" topLeftX="530" topLeftY="167" type="text" id="bTN">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.6">
+          <p>单条数据智能诊断的第一环，批量扫描的异常识别引擎。与故障概率联合判定综合预警级别。</p>
+        </content>
+      </shape>
+      <shape width="390" height="235" topLeftX="510" topLeftY="240" presetHandlers="0" type="rect" id="bTF">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="252" type="text" id="bTP">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>综合预警级别判定逻辑</p>
+        </content>
+      </shape>
+      <line id="bTi" startX="530" startY="285" endX="880.0014285685131" endY="285">
+        <border color="rgba(246, 223, 172, 0.2)" width="1"/>
+      </line>
+      <shape width="12" height="12" topLeftX="535" topLeftY="300" type="ellipse" id="bTo">
+        <fill>
+          <fillColor color="rgba(255, 80, 80, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="330" height="22" topLeftX="555" topLeftY="296" type="text" id="bTB">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(255, 180, 180, 1)" wrap="false">
+          <p><strong><span color="rgba(255, 100, 100, 1)">高危</span></strong>　fault_prob ≥ 0.7 或 is_anomaly = 1</p>
+        </content>
+      </shape>
+      <shape width="330" height="20" topLeftX="555" topLeftY="318" type="text" id="bTO">
+        <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 160, 160, 1)" wrap="false">
+          <p>自动生成告警，需立即处置</p>
+        </content>
+      </shape>
+      <line id="bTp" startX="530" startY="348" endX="880.0014285685131" endY="348">
+        <border color="rgba(255, 255, 255, 0.08)" width="1"/>
+      </line>
+      <shape width="12" height="12" topLeftX="535" topLeftY="362" type="ellipse" id="bTl">
+        <fill>
+          <fillColor color="rgba(255, 200, 80, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="330" height="22" topLeftX="555" topLeftY="358" type="text" id="bTx">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(255, 220, 150, 1)" wrap="false">
+          <p><strong><span color="rgba(255, 200, 80, 1)">中危</span></strong>　0.4 ≤ fault_prob &lt; 0.7</p>
+        </content>
+      </shape>
+      <shape width="330" height="20" topLeftX="555" topLeftY="380" type="text" id="bTm">
+        <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 190, 150, 1)" wrap="false">
+          <p>生成关注告警，建议尽快检查</p>
+        </content>
+      </shape>
+      <line id="bTX" startX="530" startY="410" endX="880.0014285685131" endY="410">
+        <border color="rgba(255, 255, 255, 0.08)" width="1"/>
+      </line>
+      <shape width="12" height="12" topLeftX="535" topLeftY="424" type="ellipse" id="bTe">
+        <fill>
+          <fillColor color="rgba(0, 255, 150, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="330" height="22" topLeftX="555" topLeftY="420" type="text" id="bTq">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(150, 255, 200, 1)" wrap="false">
+          <p><strong><span color="rgba(0, 255, 150, 1)">正常</span></strong>　fault_prob &lt; 0.4 且 is_anomaly = 0</p>
+        </content>
+      </shape>
+      <shape width="330" height="20" topLeftX="555" topLeftY="442" type="text" id="bTr">
+        <content fontSize="10" fontFamily="思源黑体" color="rgba(150, 200, 170, 1)" wrap="false">
+          <p>设备运行正常，持续监测</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bTT">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bTY">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>06 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bTa">
+      <content>
+        <p>核心技术一是基于孤立森林的时序异常检测。孤立森林通过随机划分特征空间构建多棵孤立树，异常点由于数量少且特征值偏离正常分布，路径长度更短，异常分数更接近1。本系统仅使用正常工况样本训练模型，n_estimators=100，contamination=0.05，输入8路传感器值，输出是否异常和异常分数。异常检测与故障概率联合判定综合预警级别：故障概率≥0.7或检测为异常判定为高危，0.4到0.7为中危，否则为正常。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptD">
+    <style>
+      <fill id="ftD">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bmm">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bmX">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>04 · CORE TECHNOLOGY 2 / 3</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bTL">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>核心技术二：设备故障预测</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bTg">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="200" height="32" topLeftX="60" topLeftY="125" presetHandlers="0" type="rect" id="bmG">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.15)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="180" height="24" topLeftX="70" topLeftY="130" type="text" id="bmv">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" textAlign="center" wrap="false">
+          <p>随机森林 RandomForest</p>
+        </content>
+      </shape>
+      <shape width="420" height="145" topLeftX="60" topLeftY="175" presetHandlers="0" type="rect" id="bTt">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="24" topLeftX="80" topLeftY="187" type="text" id="bmz">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>算法原理</p>
+        </content>
+      </shape>
+      <shape width="380" height="95" topLeftX="80" topLeftY="217" type="text" id="bmh">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.6">
+          <p>通过 Bootstrap 自助采样生成多个训练子集，每个子集训练一棵决策树，最终通过投票综合所有决策树的预测结果。</p>
+          <p>通过&quot;树的多样性&quot;降低单棵决策树的过拟合风险，具有较高分类精度、良好抗噪声能力和特征重要度评估能力。</p>
+        </content>
+      </shape>
+      <shape width="420" height="140" topLeftX="60" topLeftY="335" presetHandlers="0" type="rect" id="bTb">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="24" topLeftX="80" topLeftY="347" type="text" id="bTI">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>实现细节</p>
+        </content>
+      </shape>
+      <shape width="380" height="90" topLeftX="80" topLeftY="377" type="text" id="bTH">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.7">
+          <p>输入特征：8 路传感器值　监督信号：anomaly 标签</p>
+          <p>数据划分：8:2 训练集 / 测试集（37335 / 9334 条）</p>
+          <p>模型参数：n_estimators=200，random_state=42</p>
+          <p>输出：fault_label + fault_prob + normal_prob（和为 1）</p>
+        </content>
+      </shape>
+      <shape width="390" height="120" topLeftX="510" topLeftY="125" presetHandlers="0" type="rect" id="bmw">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.08)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.4)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="250" height="24" topLeftX="530" topLeftY="137" type="text" id="bTy">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>测试集准确率</p>
+        </content>
+      </shape>
+      <shape width="280" height="70" topLeftX="530" topLeftY="165" type="text" id="bTK">
+        <content textType="title" fontSize="56" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>93.04%</p>
+        </content>
+      </shape>
+      <shape width="130" height="60" topLeftX="760" topLeftY="170" type="text" id="bTU">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" lineSpacing="multiple:1.6">
+          <p>测试集 9334 条</p>
+          <p>二分类故障预测</p>
+          <p>正常 / 异常</p>
+        </content>
+      </shape>
+      <shape width="390" height="215" topLeftX="510" topLeftY="260" presetHandlers="0" type="rect" id="bmD">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="272" type="text" id="bTn">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>混淆矩阵（测试集）</p>
+        </content>
+      </shape>
+      <table id="bTk" width="330" height="140" topLeftX="540" topLeftY="305">
+        <colgroup>
+          <col span="3" width="110"/>
+        </colgroup>
+        <tr height="39">
+          <td id="bTA">
+            <fill>
+              <fillColor color="rgba(255, 255, 255, 0.05)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+              <p>真实\预测</p>
+            </content>
+          </td>
+          <td id="bTd">
+            <fill>
+              <fillColor color="rgba(0, 255, 150, 0.15)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(0, 255, 150, 1)" bold="true">
+              <p>预测正常</p>
+            </content>
+          </td>
+          <td id="bmP">
+            <fill>
+              <fillColor color="rgba(255, 80, 80, 0.15)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 100, 100, 1)" bold="true">
+              <p>预测异常</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="50">
+          <td id="bmi">
+            <fill>
+              <fillColor color="rgba(0, 255, 150, 0.1)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(0, 255, 150, 1)" bold="true">
+              <p>真实正常</p>
+            </content>
+          </td>
+          <td id="bTQ">
+            <content fontSize="16" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>6594</p>
+            </content>
+          </td>
+          <td id="bTV">
+            <content fontSize="14" fontFamily="思源黑体" color="rgba(255, 180, 80, 1)">
+              <p>92</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="51">
+          <td id="bmT">
+            <fill>
+              <fillColor color="rgba(255, 80, 80, 0.1)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 100, 100, 1)" bold="true">
+              <p>真实异常</p>
+            </content>
+          </td>
+          <td id="bmY">
+            <content fontSize="14" fontFamily="思源黑体" color="rgba(255, 180, 80, 1)">
+              <p>558</p>
+            </content>
+          </td>
+          <td id="bTZ">
+            <content fontSize="16" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>2090</p>
+            </content>
+          </td>
+        </tr>
+      </table>
+      <shape width="330" height="20" topLeftX="540" topLeftY="452" type="text" id="bmO">
+        <content fontSize="10" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" textAlign="center" wrap="false">
+          <p>精确率 95.8% · 召回率 78.9% · F1 分数 86.5%</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bmp">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bTC">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>07 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bTS">
+      <content>
+        <p>核心技术二是基于随机森林的设备故障预测。随机森林通过Bootstrap自助采样生成多个训练子集，每个子集训练一棵决策树，最终通过投票综合所有树的预测结果，降低过拟合风险。本系统以8路传感器值为输入特征，anomaly标签为监督信号，按8:2划分训练集和测试集，n_estimators=200。模型在测试集上准确率达93.04%，混淆矩阵显示真正例6594、假正例92、假负例558、真负例2090，精确率95.8%，召回率78.9%，F1分数86.5%。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptw">
+    <style>
+      <fill id="ftw">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bOM">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bOa">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>04 · CORE TECHNOLOGY 3 / 3</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bOc">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>核心技术三：故障根因分析</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bOC">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="240" height="32" topLeftX="60" topLeftY="125" presetHandlers="0" type="rect" id="bOR">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.15)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="220" height="24" topLeftX="70" topLeftY="130" type="text" id="bOs">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" textAlign="center" wrap="false">
+          <p>特征重要度 Feature Importance</p>
+        </content>
+      </shape>
+      <shape width="420" height="145" topLeftX="60" topLeftY="175" presetHandlers="0" type="rect" id="bOW">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="24" topLeftX="80" topLeftY="187" type="text" id="bOZ">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>算法原理</p>
+        </content>
+      </shape>
+      <shape width="380" height="95" topLeftX="80" topLeftY="217" type="text" id="bOi">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.6">
+          <p>从训练好的随机森林模型中提取 feature_importances_，通过评估每个特征在所有决策树分裂中带来的不纯度减少量，计算各传感器对故障预测的贡献程度。</p>
+          <p>贡献度越高的传感器，对故障判定影响越大，可作为故障根因定位依据，结合物理含义生成针对性运维建议。</p>
+        </content>
+      </shape>
+      <shape width="420" height="140" topLeftX="60" topLeftY="335" presetHandlers="0" type="rect" id="bON">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="24" topLeftX="80" topLeftY="347" type="text" id="bOj">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>根因→运维建议映射</p>
+        </content>
+      </shape>
+      <shape width="380" height="90" topLeftX="80" topLeftY="377" type="text" id="bOQ">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.8">
+          <p>振动异常（Accelerometer）→ 检查轴承磨损、叶轮动平衡</p>
+          <p>电流异常（Current）→ 检查电机负载、绕组绝缘状态</p>
+          <p>流量异常（Volume Flow Rate）→ 检查管路阀门、叶轮堵塞</p>
+          <p>温度异常（Temperature）→ 检查冷却系统、润滑状态</p>
+          <p>压力异常（Pressure）→ 检查管路泄漏、泵腔密封</p>
+        </content>
+      </shape>
+      <shape width="390" height="350" topLeftX="510" topLeftY="125" presetHandlers="0" type="rect" id="bOp">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="137" type="text" id="bOo">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>8 路传感器特征重要度排序</p>
+        </content>
+      </shape>
+      <line id="bOu" startX="530" startY="170" endX="880.0014285685131" endY="170">
+        <border color="rgba(246, 223, 172, 0.2)" width="1"/>
+      </line>
+      <shape width="30" height="24" topLeftX="530" topLeftY="180" type="text" id="bOt">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(255, 100, 100, 1)" bold="true" textAlign="center" wrap="false">
+          <p>1</p>
+        </content>
+      </shape>
+      <shape width="200" height="24" topLeftX="565" topLeftY="180" type="text" id="bOl">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>振动加速度 1</p>
+        </content>
+      </shape>
+      <shape width="340" height="6" topLeftX="530" topLeftY="206" presetHandlers="0" type="rect" id="bOF">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="310" height="6" topLeftX="530" topLeftY="206" presetHandlers="0" type="rect" id="bOL">
+        <fill>
+          <fillColor color="rgba(255, 100, 100, 0.8)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="30" height="24" topLeftX="530" topLeftY="222" type="text" id="bOX">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(255, 180, 80, 1)" bold="true" textAlign="center" wrap="false">
+          <p>2</p>
+        </content>
+      </shape>
+      <shape width="200" height="24" topLeftX="565" topLeftY="222" type="text" id="bOe">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>振动加速度 2</p>
+        </content>
+      </shape>
+      <shape width="340" height="6" topLeftX="530" topLeftY="248" presetHandlers="0" type="rect" id="bOB">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="6" topLeftX="530" topLeftY="248" presetHandlers="0" type="rect" id="bOn">
+        <fill>
+          <fillColor color="rgba(255, 180, 80, 0.8)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="30" height="24" topLeftX="530" topLeftY="264" type="text" id="bOJ">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(255, 220, 100, 1)" bold="true" textAlign="center" wrap="false">
+          <p>3</p>
+        </content>
+      </shape>
+      <shape width="200" height="24" topLeftX="565" topLeftY="264" type="text" id="bOx">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" wrap="false">
+          <p>电机电流</p>
+        </content>
+      </shape>
+      <shape width="340" height="6" topLeftX="530" topLeftY="290" presetHandlers="0" type="rect" id="bOy">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="240" height="6" topLeftX="530" topLeftY="290" presetHandlers="0" type="rect" id="bOE">
+        <fill>
+          <fillColor color="rgba(255, 220, 100, 0.7)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="120" topLeftX="530" topLeftY="308" type="text" id="bOq">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" lineSpacing="multiple:1.9">
+          <p>4. 流量　　5. 压力　　6. 温度</p>
+          <p>7. 热电偶温度　　8. 电机电压</p>
+          <p>　</p>
+          <p><span color="rgba(0, 212, 255, 1)">输出：</span>Top3 根因传感器 + 贡献度</p>
+          <p><span color="rgba(0, 212, 255, 1)">结论：</span>中文根因分析 + 针对性运维建议</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bOr">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bOA">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>08 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bOf">
+      <content>
+        <p>核心技术三是基于特征重要度的故障根因分析。从训练好的随机森林模型中提取feature_importances_，评估每路传感器对故障预测的贡献程度，贡献度越高对故障判定影响越大。系统取Top3贡献度最高的传感器作为根因，结合物理含义生成针对性运维建议，如振动异常建议检查轴承磨损、流量异常建议检查管路阀门等。这是智能诊断的最后一环，将算法输出转化为运维人员可操作的建议。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptE">
+    <style>
+      <fill id="ftE">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bPw">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bPY">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>05 · SYSTEM FUNCTIONS</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bPi">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>系统功能展示</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bOK">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="500" height="24" topLeftX="60" topLeftY="125" type="text" id="bOS">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)" wrap="false">
+          <p>深色工业科技风 · 4 个核心页面 · 完整业务闭环</p>
+        </content>
+      </shape>
+      <shape width="410" height="145" topLeftX="60" topLeftY="165" presetHandlers="0" type="rect" id="bOH">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.06)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="4" height="145" topLeftX="60" topLeftY="165" presetHandlers="0" type="rect" id="bPz">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="370" height="26" topLeftX="80" topLeftY="178" type="text" id="bPP">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>设备运维管理驾驶舱</p>
+        </content>
+      </shape>
+      <shape width="370" height="90" topLeftX="80" topLeftY="210" type="text" id="bPh">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.7">
+          <p>· 5 项 KPI 指标卡（设备数/数据量/健康率/告警数/高危数）</p>
+          <p>· 6 类可视化图表（状态环/健康柱/级别饼/趋势/特征重要度/告警流）</p>
+          <p>· 设备健康档案表（健康度评分/状态标签/未处理告警/跳转监控）</p>
+        </content>
+      </shape>
+      <shape width="410" height="145" topLeftX="490" topLeftY="165" presetHandlers="0" type="rect" id="bPp">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.06)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="4" height="145" topLeftX="490" topLeftY="165" presetHandlers="0" type="rect" id="bOI">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="370" height="26" topLeftX="510" topLeftY="178" type="text" id="bOV">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>传感器实时监控与诊断</p>
+        </content>
+      </shape>
+      <shape width="370" height="90" topLeftX="510" topLeftY="210" type="text" id="bOd">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.7">
+          <p>· 3 大仪表盘（健康度/故障概率/异常分数）+ 8 路传感器 gauge 网格</p>
+          <p>· 4 组时序曲线（渐变面积填充），设备与点数切换</p>
+          <p>· 三大算法串联智能诊断，Top3 根因进度条 + 运维建议</p>
+        </content>
+      </shape>
+      <shape width="410" height="145" topLeftX="60" topLeftY="325" presetHandlers="0" type="rect" id="bPO">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.06)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="4" height="145" topLeftX="60" topLeftY="325" presetHandlers="0" type="rect" id="bPv">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="370" height="26" topLeftX="80" topLeftY="338" type="text" id="bOb">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>故障告警管理面板</p>
+        </content>
+      </shape>
+      <shape width="370" height="90" topLeftX="80" topLeftY="370" type="text" id="bOk">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.7">
+          <p>· 4 项统计卡 + 级别占比环形图 + 告警趋势堆叠柱状图</p>
+          <p>· 告警列表（10 列完整信息，根因长文本自动换行）</p>
+          <p>· 设备/状态/级别三维组合筛选，一键扫描，告警处置闭环</p>
+        </content>
+      </shape>
+      <shape width="410" height="145" topLeftX="490" topLeftY="325" presetHandlers="0" type="rect" id="bPG">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.06)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="4" height="145" topLeftX="490" topLeftY="325" presetHandlers="0" type="rect" id="bPD">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="370" height="26" topLeftX="510" topLeftY="338" type="text" id="bPX">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>运维处置记录</p>
+        </content>
+      </shape>
+      <shape width="370" height="90" topLeftX="510" topLeftY="370" type="text" id="bOg">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.7">
+          <p>· 3 项统计（累计处置/涉及设备/运维人员，前端 Set 去重）</p>
+          <p>· 完整运维处置记录表（关联告警 ID/告警内容/处置措施/处理人/时间）</p>
+          <p>· 告警处置时自动创建运维记录，形成&quot;告警→处置→记录&quot;闭环</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bOU">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bPm">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>09 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bPT">
+      <content>
+        <p>系统包含四个核心页面，采用深色工业科技风界面。第一页是设备运维管理驾驶舱，包含5项KPI指标卡、6类可视化图表和设备健康档案表。第二页是传感器实时监控与诊断，包含3大仪表盘、8路传感器gauge、4组时序曲线和三大算法串联智能诊断。第三页是故障告警管理面板，包含统计卡、级别筛选、趋势图和告警处置功能。第四页是运维处置记录，包含统计和完整处置历史。告警处置时自动创建运维记录，形成完整业务闭环。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptS">
+    <style>
+      <fill id="ftS">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bPf">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bPs">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>06 · TESTING &amp; VERIFICATION</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bPj">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>系统测试与验证</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bPQ">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="110" topLeftX="60" topLeftY="125" presetHandlers="0" type="rect" id="bPV">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.1)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.4)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="240" height="22" topLeftX="80" topLeftY="137" type="text" id="bPM">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>自动化测试用例</p>
+        </content>
+      </shape>
+      <shape width="240" height="60" topLeftX="80" topLeftY="162" type="text" id="bPa">
+        <content textType="title" fontSize="48" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>38</p>
+        </content>
+      </shape>
+      <shape width="150" height="40" topLeftX="170" topLeftY="180" type="text" id="bPW">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(160, 180, 210, 1)">
+          <p>个用例全部通过</p>
+          <p>耗时 1.257 秒</p>
+        </content>
+      </shape>
+      <shape width="280" height="110" topLeftX="360" topLeftY="125" presetHandlers="0" type="rect" id="bPZ">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.08)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="240" height="22" topLeftX="380" topLeftY="137" type="text" id="bPS">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>测试框架</p>
+        </content>
+      </shape>
+      <shape width="240" height="60" topLeftX="380" topLeftY="165" type="text" id="bPE">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" lineSpacing="multiple:1.7">
+          <p>Python 标准库 unittest</p>
+          <p>Flask test_client（无需启动服务器）</p>
+          <p>5 个测试类，覆盖全链路</p>
+        </content>
+      </shape>
+      <shape width="240" height="110" topLeftX="660" topLeftY="125" presetHandlers="0" type="rect" id="bPq">
+        <fill>
+          <fillColor color="rgba(0, 255, 150, 0.08)"/>
+        </fill>
+        <border color="rgba(0, 255, 150, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="200" height="22" topLeftX="680" topLeftY="137" type="text" id="bPc">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 255, 150, 1)" bold="true" wrap="false">
+          <p>测试结果</p>
+        </content>
+      </shape>
+      <shape width="200" height="60" topLeftX="680" topLeftY="165" type="text" id="bPC">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(180, 255, 210, 1)" lineSpacing="multiple:1.7">
+          <p>Ran 38 tests in 1.257s</p>
+          <p>OK — 全部通过</p>
+          <p>0 失败，0 错误</p>
+        </content>
+      </shape>
+      <shape width="300" height="24" topLeftX="60" topLeftY="255" type="text" id="bPk">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>测试用例分布</p>
+        </content>
+      </shape>
+      <table id="bPJ" width="420" height="185" topLeftX="60" topLeftY="285">
+        <colgroup>
+          <col span="1" width="160"/>
+          <col span="1" width="60"/>
+          <col span="1" width="200"/>
+        </colgroup>
+        <tr height="34">
+          <td id="bPy">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>测试类</p>
+            </content>
+          </td>
+          <td id="bPI">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>用例数</p>
+            </content>
+          </td>
+          <td id="bPH">
+            <fill>
+              <fillColor color="rgba(0, 212, 255, 0.2)"/>
+            </fill>
+            <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true">
+              <p>覆盖内容</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bPl">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>TestDatabase</p>
+            </content>
+          </td>
+          <td id="bPn">
+            <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true">
+              <p>7</p>
+            </content>
+          </td>
+          <td id="bPK">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+              <p>4 表存在性/设备映射/数据量</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bPU">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>TestAlgorithms</p>
+            </content>
+          </td>
+          <td id="bPo">
+            <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true">
+              <p>8</p>
+            </content>
+          </td>
+          <td id="bPF">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+              <p>三模型加载/返回结构/准确率</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bPL">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>TestAPI</p>
+            </content>
+          </td>
+          <td id="bPg">
+            <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true">
+              <p>17</p>
+            </content>
+          </td>
+          <td id="bwG">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+              <p>13 接口/三维筛选/组合筛选</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="30">
+          <td id="bwz">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>TestBusinessFlow</p>
+            </content>
+          </td>
+          <td id="bPR">
+            <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true">
+              <p>5</p>
+            </content>
+          </td>
+          <td id="bPN">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+              <p>扫描→告警→处置→记录闭环</p>
+            </content>
+          </td>
+        </tr>
+        <tr height="31">
+          <td id="bPu">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)">
+              <p>TestPages</p>
+            </content>
+          </td>
+          <td id="bPt">
+            <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true">
+              <p>4</p>
+            </content>
+          </td>
+          <td id="bPb">
+            <content fontSize="10" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+              <p>4 页面路由 200 且含标题</p>
+            </content>
+          </td>
+        </tr>
+      </table>
+      <shape width="390" height="215" topLeftX="510" topLeftY="255" presetHandlers="0" type="rect" id="bPx">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="267" type="text" id="bPr">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>集成调试修复的真实 Bug</p>
+        </content>
+      </shape>
+      <line id="bPA" startX="530" startY="298" endX="880.0014285685131" endY="298">
+        <border color="rgba(246, 223, 172, 0.2)" width="1"/>
+      </line>
+      <shape width="350" height="155" topLeftX="530" topLeftY="308" type="text" id="bPd">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.8">
+          <p>① 数据库列名不一致（空格 vs 下划线）→ 新增映射函数修复</p>
+          <p>② 监控页仪表盘初始空白 → 页面加载自动执行诊断</p>
+          <p>③ 表格按钮换行与字体重叠 → 布局比例调整 + td-wrap 类</p>
+          <p>④ 测试脚本 bytes 语法错误 → 改为 decode 后字符串判断</p>
+          <p>⑤ ECharts 重复初始化警告 → 封装 renderGauge 复用实例</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bPe">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bPB">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>10 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bwT">
+      <content>
+        <p>系统测试使用Python标准库unittest和Flask test_client，无需启动服务器。共编写38个自动化测试用例，分为5个测试类：TestDatabase(7个)验证4张表和数据量，TestAlgorithms(8个)验证三大算法模型，TestAPI(17个)验证13个接口和三维筛选，TestBusinessFlow(5个)验证扫描到告警到处置到记录的完整闭环，TestPages(4个)验证4个页面路由。全部38个用例在1.257秒内通过，0失败0错误。集成调试过程中发现并修复了5个真实bug，包括数据库列名不一致、仪表盘初始空白、表格字体重叠等问题。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptb">
+    <style>
+      <fill id="ftb">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bws">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bwa">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>07 · AI USAGE DISCLOSURE</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bww">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>AI 使用披露（Vibe-Coding）</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bwv">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="200" height="60" topLeftX="60" topLeftY="125" presetHandlers="0" type="rect" id="bwp">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.12)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.4)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="170" height="20" topLeftX="75" topLeftY="135" type="text" id="bwi">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" wrap="false">
+          <p>AI 辅助工具</p>
+        </content>
+      </shape>
+      <shape width="170" height="24" topLeftX="75" topLeftY="155" type="text" id="bwM">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>豆包（doubao）</p>
+        </content>
+      </shape>
+      <shape width="240" height="60" topLeftX="280" topLeftY="125" presetHandlers="0" type="rect" id="bwl">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.1)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="210" height="20" topLeftX="295" topLeftY="135" type="text" id="bwo">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" wrap="false">
+          <p>过程档案</p>
+        </content>
+      </shape>
+      <shape width="210" height="24" topLeftX="295" topLeftY="155" type="text" id="bwq">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>7 份 prompt 档案</p>
+        </content>
+      </shape>
+      <shape width="240" height="60" topLeftX="540" topLeftY="125" presetHandlers="0" type="rect" id="bwm">
+        <fill>
+          <fillColor color="rgba(0, 255, 150, 0.08)"/>
+        </fill>
+        <border color="rgba(0, 255, 150, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="210" height="20" topLeftX="555" topLeftY="135" type="text" id="bwD">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(0, 255, 150, 1)" wrap="false">
+          <p>版本控制</p>
+        </content>
+      </shape>
+      <shape width="210" height="24" topLeftX="555" topLeftY="155" type="text" id="bwh">
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>完整 Git 提交历史</p>
+        </content>
+      </shape>
+      <shape width="130" height="60" topLeftX="800" topLeftY="125" presetHandlers="0" type="rect" id="bwE">
+        <fill>
+          <fillColor color="rgba(255, 100, 100, 0.08)"/>
+        </fill>
+        <border color="rgba(255, 100, 100, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="110" height="20" topLeftX="810" topLeftY="135" type="text" id="bwx">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(255, 150, 150, 1)" wrap="false">
+          <p>人工审查</p>
+        </content>
+      </shape>
+      <shape width="110" height="24" topLeftX="810" topLeftY="155" type="text" id="bwO">
+        <content fontSize="13" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>100% 审查</p>
+        </content>
+      </shape>
+      <shape width="400" height="24" topLeftX="60" topLeftY="205" type="text" id="bwY">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>关键提示词策略</p>
+        </content>
+      </shape>
+      <shape width="420" height="235" topLeftX="60" topLeftY="235" presetHandlers="0" type="rect" id="bwR">
+        <fill>
+          <fillColor color="rgba(255, 255, 255, 0.03)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="380" height="210" topLeftX="80" topLeftY="248" type="text" id="bwJ">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.6">
+          <p><strong><span color="rgba(0, 212, 255, 1)">① 任务拆解</span></strong>：大任务拆分为可执行子任务，单次下发单一明确需求</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">② 约束说明</span></strong>：明确技术栈、架构约束、业务场景、代码规范</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">③ 验收标准</span></strong>：每次请求明确可验证的验收条件（接口格式/功能闭环）</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">④ 上下文工程</span></strong>：修改前让 AI 先读已有代码，增量修改保证一致性</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">⑤ 规格驱动</span></strong>：先需求规格→AI 制定计划→分步实现→逐步验收</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">⑥ 人工接管</span></strong>：AI 无法修复时回滚/缩小改动/最小复现辅助定位</p>
+        </content>
+      </shape>
+      <shape width="400" height="24" topLeftX="510" topLeftY="205" type="text" id="bwN">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>AI 出错案例及人工纠正</p>
+        </content>
+      </shape>
+      <shape width="390" height="235" topLeftX="510" topLeftY="235" presetHandlers="0" type="rect" id="bwB">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.25)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="210" topLeftX="530" topLeftY="248" type="text" id="bwP">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.6">
+          <p><strong><span color="rgba(255, 150, 150, 1)">① 列名不一致</span></strong>：AI 生成算法用空格原名，DB 用下划线→人工新增映射函数</p>
+          <p><strong><span color="rgba(255, 150, 150, 1)">② 阈值不合理</span></strong>：AI 设 90/70 导致全红→人工调整为 85/60，得到合理分布</p>
+          <p><strong><span color="rgba(255, 150, 150, 1)">③ 全局 nowrap 溢出</span></strong>：AI 统一 nowrap 导致长文本溢出→人工新增 td-wrap 类</p>
+          <p><strong><span color="rgba(255, 150, 150, 1)">④ bytes 语法错误</span></strong>：AI 用 b&quot;中文&quot;→人工改为 decode 后字符串判断</p>
+          <p><strong><span color="rgba(255, 150, 150, 1)">⑤ ECharts 重复 init</span></strong>：AI 每次 init 同一 DOM→人工封装 renderGauge 复用实例</p>
+          <p><strong><span color="rgba(0, 255, 150, 1)">原则：AI 生成代码必须经人工审查逻辑/安全/业务适配性，测试验证后才提交</span></strong></p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bwX">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bwf">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>11 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bwe">
+      <content>
+        <p>本项目全程采用Vibe-Coding模式开发，使用豆包作为AI辅助工具。关键提示词策略包括任务拆解、约束说明、验收标准、上下文工程、规格驱动和人工接管。开发过程中AI生成代码出现了5个典型错误，包括数据库列名不一致、健康度阈值不合理、全局nowrap导致溢出、bytes语法错误和ECharts重复初始化，均经人工审查后修复。所有AI生成代码必须经人工审查逻辑、安全性和业务适配性，通过自动化测试验证后才提交到GitHub。项目保留了7份按阶段编号的prompt档案和完整的Git提交历史，满足课程设计过程考核要求。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptc">
+    <style>
+      <fill id="ftc">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bwk">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="280" height="24" topLeftX="60" topLeftY="35" type="text" id="bDO">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="2" wrap="false">
+          <p>08 · SUMMARY &amp; OUTLOOK</p>
+        </content>
+      </shape>
+      <shape width="700" height="40" topLeftX="60" topLeftY="60" type="text" id="bDp">
+        <content textType="title" fontSize="28" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" wrap="false">
+          <p>总结与展望</p>
+        </content>
+      </shape>
+      <shape width="50" height="3" topLeftX="60" topLeftY="108" presetHandlers="0" type="rect" id="bwA">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="400" height="24" topLeftX="60" topLeftY="125" type="text" id="bwd">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>项目成果</p>
+        </content>
+      </shape>
+      <shape width="200" height="100" topLeftX="60" topLeftY="155" presetHandlers="0" type="rect" id="bDP">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.1)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="170" height="40" topLeftX="75" topLeftY="165" type="text" id="bDi">
+        <content textType="title" fontSize="32" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>4+13+3</p>
+        </content>
+      </shape>
+      <shape width="180" height="40" topLeftX="75" topLeftY="208" type="text" id="bwI">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+          <p>4 页面 / 13 API</p>
+          <p>3 大算法模块</p>
+        </content>
+      </shape>
+      <shape width="200" height="100" topLeftX="280" topLeftY="155" presetHandlers="0" type="rect" id="bwH">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.1)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.35)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="170" height="40" topLeftX="295" topLeftY="165" type="text" id="bDw">
+        <content textType="title" fontSize="32" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>93.04%</p>
+        </content>
+      </shape>
+      <shape width="180" height="40" topLeftX="295" topLeftY="208" type="text" id="bDR">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+          <p>故障预测测试集</p>
+          <p>准确率</p>
+        </content>
+      </shape>
+      <shape width="200" height="100" topLeftX="60" topLeftY="270" presetHandlers="0" type="rect" id="bwK">
+        <fill>
+          <fillColor color="rgba(0, 255, 150, 0.08)"/>
+        </fill>
+        <border color="rgba(0, 255, 150, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="170" height="40" topLeftX="75" topLeftY="280" type="text" id="bwU">
+        <content textType="title" fontSize="32" fontFamily="思源黑体" color="rgba(0, 255, 150, 1)" bold="true" wrap="false">
+          <p>38 / 38</p>
+        </content>
+      </shape>
+      <shape width="180" height="40" topLeftX="75" topLeftY="323" type="text" id="bDD">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+          <p>自动化测试用例</p>
+          <p>全部通过</p>
+        </content>
+      </shape>
+      <shape width="200" height="100" topLeftX="280" topLeftY="270" presetHandlers="0" type="rect" id="bDf">
+        <fill>
+          <fillColor color="rgba(255, 150, 100, 0.08)"/>
+        </fill>
+        <border color="rgba(255, 150, 100, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="170" height="40" topLeftX="295" topLeftY="280" type="text" id="bwg">
+        <content textType="title" fontSize="32" fontFamily="思源黑体" color="rgba(255, 180, 120, 1)" bold="true" wrap="false">
+          <p>7 份</p>
+        </content>
+      </shape>
+      <shape width="180" height="40" topLeftX="295" topLeftY="323" type="text" id="bDG">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)">
+          <p>Vibe-Coding 过程</p>
+          <p>prompt 档案</p>
+        </content>
+      </shape>
+      <shape width="390" height="165" topLeftX="510" topLeftY="125" presetHandlers="0" type="rect" id="bDv">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 0.05)"/>
+        </fill>
+        <border color="rgba(0, 212, 255, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="137" type="text" id="bwb">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" bold="true" wrap="false">
+          <p>创新点</p>
+        </content>
+      </shape>
+      <line id="bDz" startX="530" startY="168" endX="880.0014285685131" endY="168">
+        <border color="rgba(0, 212, 255, 0.2)" width="1"/>
+      </line>
+      <shape width="350" height="105" topLeftX="530" topLeftY="178" type="text" id="bDh">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.6">
+          <p><strong><span color="rgba(0, 212, 255, 1)">① 三算法串联诊断</span></strong>：孤立森林异常检测→随机森林故障预测→特征重要度根因分析，形成完整智能诊断链</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">② 综合预警级别</span></strong>：融合异常分数与故障概率，高危/中危/正常三级判定，避免单一指标误报</p>
+          <p><strong><span color="rgba(0, 212, 255, 1)">③ 运维闭环</span></strong>：告警扫描→告警处置→运维记录自动创建，状态同步，形成可追溯闭环</p>
+        </content>
+      </shape>
+      <shape width="390" height="165" topLeftX="510" topLeftY="305" presetHandlers="0" type="rect" id="bwV">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.05)"/>
+        </fill>
+        <border color="rgba(246, 223, 172, 0.3)" width="1"/>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="350" height="24" topLeftX="530" topLeftY="317" type="text" id="bDT">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(246, 223, 172, 1)" bold="true" wrap="false">
+          <p>不足与未来展望</p>
+        </content>
+      </shape>
+      <line id="bDY" startX="530" startY="348" endX="880.0014285685131" endY="348">
+        <border color="rgba(246, 223, 172, 0.2)" width="1"/>
+      </line>
+      <shape width="350" height="105" topLeftX="530" topLeftY="358" type="text" id="bwS">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(180, 200, 230, 1)" lineSpacing="multiple:1.6">
+          <p><strong><span color="rgba(246, 223, 172, 1)">① 数据规模</span></strong>：当前使用公开 SKAB 数据集，未来可接入真实工业现场数据，提升模型泛化能力</p>
+          <p><strong><span color="rgba(246, 223, 172, 1)">② 模型可解释性</span></strong>：可引入 SHAP/LIME 等方法，提升根因分析的可解释性和可信度</p>
+          <p><strong><span color="rgba(246, 223, 172, 1)">③ 实时流式处理</span></strong>：当前为批量分析，未来可扩展 Kafka/Flink 实时流式处理，支持多设备联动分析</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bDm">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bDX">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>12 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bwC">
+      <content>
+        <p>本项目完成了面向车间设备运维的智能故障预警系统，包含4个页面、13个API接口和3大算法模块，故障预测测试集准确率达到93.04%，38个自动化测试用例全部通过，保留了7份Vibe-Coding过程档案。项目有三个创新点：一是三算法串联形成完整智能诊断链，二是融合异常分数与故障概率的综合预警级别判定，三是告警到处置到运维记录的完整闭环。不足之处在于数据集规模有限、模型可解释性可进一步提升、当前为批量分析。未来可接入真实工业数据、引入SHAP可解释性方法、扩展实时流式处理能力。</p>
+      </content>
+    </note>
+  </slide>
+  <slide id="ptK">
+    <style>
+      <fill id="ftK">
+        <fillColor color="linear-gradient(135deg,rgba(10, 20, 48, 1) 0%,rgba(15, 28, 60, 1) 100%)"/>
+      </fill>
+    </style>
+    <data>
+      <shape width="960" height="3" topLeftX="0" topLeftY="0" presetHandlers="0" type="rect" id="bwW">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="960" height="3" topLeftX="0" topLeftY="537" presetHandlers="0" type="rect" id="bwr">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.6)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="200" height="3" topLeftX="380" topLeftY="155" presetHandlers="0" type="rect" id="bwn">
+        <fill>
+          <fillColor color="rgba(0, 212, 255, 1)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="600" height="80" topLeftX="180" topLeftY="175" type="text" id="bwt">
+        <content textType="title" fontSize="56" fontFamily="思源黑体" color="rgba(255, 255, 255, 1)" bold="true" letterSpacing="4" textAlign="center" wrap="false">
+          <p>感谢聆听</p>
+        </content>
+      </shape>
+      <shape width="600" height="40" topLeftX="180" topLeftY="265" type="text" id="bwZ">
+        <content fontSize="20" fontFamily="思源黑体" color="rgba(0, 212, 255, 1)" letterSpacing="6" textAlign="center" wrap="false">
+          <p>敬请批评指正</p>
+        </content>
+      </shape>
+      <shape width="200" height="2" topLeftX="380" topLeftY="320" presetHandlers="0" type="rect" id="bwF">
+        <fill>
+          <fillColor color="rgba(246, 223, 172, 0.5)"/>
+        </fill>
+        <content fontSize="16" fontFamily="思源黑体" color="rgba(31, 35, 41, 1)"/>
+      </shape>
+      <shape width="600" height="30" topLeftX="180" topLeftY="340" type="text" id="bwj">
+        <content fontSize="14" fontFamily="思源黑体" color="rgba(200, 220, 240, 1)" textAlign="center" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统</p>
+        </content>
+      </shape>
+      <shape width="600" height="24" topLeftX="180" topLeftY="375" type="text" id="bwc">
+        <content fontSize="12" fontFamily="思源黑体" color="rgba(140, 160, 190, 1)" textAlign="center" wrap="false">
+          <p>北华大学 · 机械工程学院 · 智能制造工程</p>
+        </content>
+      </shape>
+      <shape width="700" height="24" topLeftX="130" topLeftY="405" type="text" id="bwy">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="center" wrap="false">
+          <p>学生：_______________　学号：_______________　指导教师：_______________</p>
+        </content>
+      </shape>
+      <shape width="400" height="30" topLeftX="60" topLeftY="495" type="text" id="bwL">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" wrap="false">
+          <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+        </content>
+      </shape>
+      <shape width="140" height="30" topLeftX="760" topLeftY="495" type="text" id="bwQ">
+        <content fontSize="11" fontFamily="思源黑体" color="rgba(100, 120, 150, 1)" textAlign="right" wrap="false">
+          <p>13 / 13</p>
+        </content>
+      </shape>
+    </data>
+    <note id="bwu">
+      <content>
+        <p>本课程设计完成了面向车间设备运维的智能故障预警系统，采用B/S架构，包含孤立森林异常检测、随机森林故障预测和特征重要度根因分析三大算法模块，实现了从数据采集、预处理、模型训练到系统开发、测试和部署的完整流程。全程采用Vibe-Coding模式开发，使用豆包作为AI辅助工具，保留了完整的过程档案和Git提交历史。感谢指导教师的悉心指导，敬请各位老师批评指正。</p>
+      </content>
+    </note>
+  </slide>
+</presentation>

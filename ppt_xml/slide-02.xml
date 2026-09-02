@@ -1,0 +1,145 @@
+<slide xmlns="https://www.larkoffice.com/sml/2.0">
+  <style>
+    <fill>
+      <fillColor color="linear-gradient(135deg,rgba(10,20,48,1) 0%,rgba(15,28,60,1) 100%)"/>
+    </fill>
+  </style>
+  <data>
+    <shape type="rect" topLeftX="0" topLeftY="0" width="960" height="3">
+      <fill><fillColor color="rgba(0,212,255,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="40" width="200" height="30">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" letterSpacing="3" wrap="false">
+        <p>CONTENTS</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="70" width="400" height="50">
+      <content textType="title" fontSize="32" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>汇报大纲</p>
+      </content>
+    </shape>
+    <shape type="rect" topLeftX="60" topLeftY="125" width="60" height="3">
+      <fill><fillColor color="rgba(246,223,172,1)"/></fill>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="170" width="380" height="70">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>01</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="110" topLeftY="165" width="320" height="30">
+      <content textType="body" fontSize="18" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>研究背景与意义</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="110" topLeftY="198" width="320" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" wrap="false">
+        <p>设备运维痛点 · 研究目标 · 技术路线</p>
+      </content>
+    </shape>
+    <line startX="60" startY="240" endX="440" endY="240">
+      <border color="rgba(0,212,255,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="60" topLeftY="260" width="380" height="70">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>02</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="110" topLeftY="255" width="320" height="30">
+      <content textType="body" fontSize="18" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>系统方案设计</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="110" topLeftY="288" width="320" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" wrap="false">
+        <p>B/S 四层架构 · 功能模块 · 数据库设计</p>
+      </content>
+    </shape>
+    <line startX="60" startY="330" endX="440" endY="330">
+      <border color="rgba(0,212,255,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="60" topLeftY="350" width="380" height="70">
+      <content textType="body" fontSize="14" color="rgba(0,212,255,1)" bold="true" wrap="false">
+        <p>03</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="110" topLeftY="345" width="320" height="30">
+      <content textType="body" fontSize="18" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>数据资源构建</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="110" topLeftY="378" width="320" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" wrap="false">
+        <p>SKAB 数据集 · 预处理 · 46669 条入库</p>
+      </content>
+    </shape>
+    <line startX="60" startY="420" endX="440" endY="420">
+      <border color="rgba(0,212,255,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="520" topLeftY="170" width="380" height="70">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>04</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="570" topLeftY="165" width="320" height="30">
+      <content textType="body" fontSize="18" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>核心技术实现</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="570" topLeftY="198" width="320" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" wrap="false">
+        <p>孤立森林 · 随机森林 · 特征重要度</p>
+      </content>
+    </shape>
+    <line startX="520" startY="240" endX="900" endY="240">
+      <border color="rgba(246,223,172,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="520" topLeftY="260" width="380" height="70">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>05</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="570" topLeftY="255" width="320" height="30">
+      <content textType="body" fontSize="18" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>系统测试与验证</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="570" topLeftY="288" width="320" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" wrap="false">
+        <p>38 个自动化用例 · 业务闭环 · bug 修复</p>
+      </content>
+    </shape>
+    <line startX="520" startY="330" endX="900" endY="330">
+      <border color="rgba(246,223,172,0.2)" width="1"/>
+    </line>
+    <shape type="text" topLeftX="520" topLeftY="350" width="380" height="70">
+      <content textType="body" fontSize="14" color="rgba(246,223,172,1)" bold="true" wrap="false">
+        <p>06</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="570" topLeftY="345" width="320" height="30">
+      <content textType="body" fontSize="18" color="rgba(255,255,255,1)" bold="true" wrap="false">
+        <p>总结与展望</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="570" topLeftY="378" width="320" height="24">
+      <content textType="body" fontSize="12" color="rgba(140,160,190,1)" wrap="false">
+        <p>AI 使用披露 · 创新点 · 未来方向</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="60" topLeftY="490" width="400" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" wrap="false">
+        <p>面向车间设备运维的智能故障预警系统 · 课程设计答辩</p>
+      </content>
+    </shape>
+    <shape type="text" topLeftX="760" topLeftY="490" width="140" height="30">
+      <content textType="body" fontSize="11" color="rgba(100,120,150,1)" textAlign="right" wrap="false">
+        <p>02 / 13</p>
+      </content>
+    </shape>
+  </data>
+  <note>
+    <content textType="body">
+      <p>本次汇报分为六个部分：首先介绍研究背景与意义，说明设备运维的痛点和研究目标；然后展示系统方案设计，包括B/S四层架构和功能模块；第三部分介绍数据资源构建，使用SKAB数据集完成46669条数据预处理和入库；第四部分重点讲解三大核心技术的实现；第五部分展示系统测试与验证结果；最后进行总结与展望。</p>
+    </content>
+  </note>
+</slide>
