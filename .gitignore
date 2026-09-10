@@ -18,3 +18,4 @@ server.log
 # Python编译缓存
 *.pyc
 __pycache__/
+*.pptx
